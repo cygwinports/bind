@@ -1,0 +1,4 @@
+category: Net
+requires: cygwin libbind9_0 libdns21 libisc11 libisccc0 libisccfg1 liblwres9
+sdesc: "DNS libraries and utilities suite"
+ldesc: "DNS libraries and utilities suite"
