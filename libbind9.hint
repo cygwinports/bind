@@ -1,5 +1,5 @@
 category: Net Libs
-requires: cygwin libdns22 libisccfg1
+requires: cygwin libdns32 libisccfg30
 external-source: bind
 sdesc: "DNS libraries and utilities suite (Bind9 library)"
 ldesc: "DNS libraries and utilities suite"

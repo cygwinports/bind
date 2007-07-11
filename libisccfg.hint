@@ -1,5 +1,5 @@
 category: Net Libs
-requires: cygwin libisc11
+requires: cygwin libisc32
 external-source: bind
 sdesc: "DNS libraries and utilities suite (ISCCFG library)"
 ldesc: "DNS libraries and utilities suite"
