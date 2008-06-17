@@ -1,4 +1,4 @@
 category: Net
-requires: cygwin libbind9_30 libdns32 libisc32 libisccc30 libisccfg30 liblwres30
+requires: cygwin libbind9_40 libdns42 libisc41 libisccc40 libisccfg40 liblwres40
 sdesc: "DNS libraries and utilities suite"
 ldesc: "DNS libraries and utilities suite"

@@ -3,19 +3,19 @@ bind
 DNS libraries and utilities suite
 
 Runtime requirements:
-  cygwin-1.5.24-2
-  openssl-0.9.8e-3
+  cygwin-1.5.25-15
+  libxml2-2.6.32-1
+  openssl-0.9.8h-1
 
 Build requirements:
 (besides corresponding -devel packages)
-  cygwin-1.5.24-2
   autoconf2.5-2.61-1
-  automake1.9-1.9.6-2
-  binutils-20060817-1
-  cygport-0.3.5-1
-  gawk-3.1.5-4
+  automake1.10-1.10.1-1
+  binutils-20080523-1
+  cygport-0.3.11-1
+  gawk-3.1.6-1
   gcc-core-3.4.4-3
-  libtool1.5-1.5.23a-2
+  libtool-2.2.2-2
   make-3.81-1
   sed-4.1.5-2
 
@@ -28,22 +28,22 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack bind-9.4.1_p1-X-src.tar.bz2
+  unpack bind-9.5.0-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./bind-9.4.1_p1-X.cygport all
+  cygport ./bind-9.5.0-X.cygport all
 
 This will create:
-  /usr/src/bind-9.4.1_p1-X-src.tar.bz2
-  /usr/src/bind-9.4.1_p1-X.tar.bz2
-  /usr/src/libbind-devel-9.4.1_p1-X.tar.bz2
-  /usr/src/libbind9_30-9.4.1_p1-X.tar.bz2
-  /usr/src/libdns32-9.4.1_p1-X.tar.bz2
-  /usr/src/libisc32-9.4.1_p1-X.tar.bz2
-  /usr/src/libisccc30-9.4.1_p1-X.tar.bz2
-  /usr/src/libisccfg30-9.4.1_p1-X.tar.bz2
-  /usr/src/liblwres30-9.4.1_p1-X.tar.bz2
+  /usr/src/bind-9.5.0-X-src.tar.bz2
+  /usr/src/bind-9.5.0-X.tar.bz2
+  /usr/src/libbind-devel-9.5.0-X.tar.bz2
+  /usr/src/libbind9_40-9.5.0-X.tar.bz2
+  /usr/src/libdns42-9.5.0-X.tar.bz2
+  /usr/src/libisc41-9.5.0-X.tar.bz2
+  /usr/src/libisccc40-9.5.0-X.tar.bz2
+  /usr/src/libisccfg40-9.5.0-X.tar.bz2
+  /usr/src/liblwres40-9.5.0-X.tar.bz2
 
 -------------------------------------------
 
@@ -63,7 +63,6 @@ Files included in the binary packages:
   /usr/sbin/named.exe
   /usr/sbin/rndc-confgen.exe
   /usr/sbin/rndc.exe
-  /usr/share/doc/Cygwin/bind-9.4.1.README
   /usr/share/doc/bind-9.4.1/COPYRIGHT
   /usr/share/doc/bind-9.4.1/Changes
   /usr/share/doc/bind-9.4.1/FAQ
@@ -84,18 +83,23 @@ Files included in the binary packages:
   /usr/share/man/man8/rndc-confgen.8.gz
   /usr/share/man/man8/rndc.8.gz
 
-(libbind9_30)
-  /usr/bin/cygbind9-30.dll
-(libdns32)
-  /usr/bin/cygdns-32.dll
-(libisc32)
-  /usr/bin/cygisc-32.dll
-(libisccc30)
-  /usr/bin/cygisccc-30.dll
-(libisccfg30)
-  /usr/bin/cygisccfg-30.dll
-(liblwres30)
-  /usr/bin/cyglwres-30.dll
+(libbind9_40)
+  /usr/bin/cygbind9-40.dll
+
+(libdns42)
+  /usr/bin/cygdns-42.dll
+
+(libisc41)
+  /usr/bin/cygisc-41.dll
+
+(libisccc40)
+  /usr/bin/cygisccc-40.dll
+
+(libisccfg40)
+  /usr/bin/cygisccfg-40.dll
+
+(liblwres40)
+  /usr/bin/cyglwres-40.dll
 
 (libbind-devel)
   /usr/bin/isc-config.sh
@@ -276,16 +280,22 @@ Files included in the binary packages:
   /usr/include/lwres/platform.h
   /usr/include/lwres/result.h
   /usr/include/lwres/version.h
+  /usr/lib/libbind9.a
   /usr/lib/libbind9.dll.a
   /usr/lib/libbind9.la
+  /usr/lib/libdns.a
   /usr/lib/libdns.dll.a
   /usr/lib/libdns.la
+  /usr/lib/libisc.a
   /usr/lib/libisc.dll.a
   /usr/lib/libisc.la
+  /usr/lib/libisccc.a
   /usr/lib/libisccc.dll.a
   /usr/lib/libisccc.la
+  /usr/lib/libisccfg.a
   /usr/lib/libisccfg.dll.a
   /usr/lib/libisccfg.la
+  /usr/lib/liblwres.a
   /usr/lib/liblwres.dll.a
   /usr/lib/liblwres.la
   /usr/share/man/man3/lwres.3.gz
@@ -377,6 +387,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 9.5.0-1 -----
+Version bump.
 
 ----- version 9.4.1_p1-1 -----
 Upstream security patch for CVE-2007-2925 and CVE-2007-2926.

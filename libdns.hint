@@ -1,5 +1,5 @@
 category: Net Libs
-requires: cygwin libisc32 openssl
+requires: cygwin libisc41 openssl
 external-source: bind
 sdesc: "DNS libraries and utilities suite (DNS library)"
 ldesc: "DNS libraries and utilities suite"

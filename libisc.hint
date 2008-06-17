@@ -1,5 +1,5 @@
 category: Net Libs
-requires: cygwin
+requires: cygwin libxml2
 external-source: bind
 sdesc: "DNS libraries and utilities suite (ISC library)"
 ldesc: "DNS libraries and utilities suite"
