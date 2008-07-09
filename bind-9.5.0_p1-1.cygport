@@ -1,0 +1,35 @@
+_pv=${PV/_p/-P}
+
+DESCRIPTION="DNS libraries and utilities suite"
+HOMEPAGE="http://www.isc.org/sw/bind/"
+SRC_URI="http://ftp.isc.org/isc/${PN}${PV_MAJ}/${_pv}/${PN}-${_pv}.tar.gz
+         http://ftp.isc.org/isc/${PN}${PV_MAJ}/${_pv}/${PN}-${_pv}.tar.gz.asc"
+SRC_DIR="${PN}-${_pv}"
+
+PKG_NAMES="bind"
+PKG_HINTS="setup"
+PKG_CONTENTS[0]='--exclude=man3 usr/bin/*.exe usr/sbin/ usr/share/'
+
+libs="bind9 dns isc isccc isccfg lwres"
+apis=(_40   43  41  40    40     40)
+n=0
+for l in ${libs}
+do
+	PKG_NAMES+=" lib${l}${apis[$n]} lib${l}-devel"
+	PKG_HINTS+=" lib${l} lib${l}-dev"
+	PKG_CONTENTS[((n*2+1))]="usr/bin/cyg${l}-${apis[$n]#_}.dll"
+	PKG_CONTENTS[((n*2+2))]="usr/include/${l}/ usr/lib/lib${l}.*"
+
+	case ${l} in
+		dns)	PKG_CONTENTS[((n*2+2))]+=" usr/include/dst/" ;;
+		isc)	PKG_CONTENTS[((n*2+2))]+=" usr/bin/isc-config.sh" ;;
+		lwres)	PKG_CONTENTS[((n*2+2))]+=" usr/share/man/man3/${l}*" ;;
+	esac
+
+	let n+=1
+done
+unset libs apis l n
+
+DISTCLEANFILES="aclocal.m4 libtool.m4"
+CYGCONF_ARGS="--with-libtool"
+MAKEOPTS+=" -j1"

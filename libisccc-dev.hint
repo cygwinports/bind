@@ -1,0 +1,5 @@
+category: Net Libs
+requires: cygwin libisccc40 libisc-devel
+external-source: bind
+sdesc: "DNS libraries and utilities suite (ISCCC library)"
+ldesc: "DNS libraries and utilities suite"

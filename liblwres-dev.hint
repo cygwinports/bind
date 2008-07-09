@@ -1,0 +1,5 @@
+category: Net Libs
+requires: cygwin liblwres40 libisc-devel
+external-source: bind
+sdesc: "DNS libraries and utilities suite (LWRES library)"
+ldesc: "DNS libraries and utilities suite"
