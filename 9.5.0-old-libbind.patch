@@ -1,0 +1,11 @@
+--- origsrc/bind-9.5.0-P1/configure.in	2008-05-05 20:32:51.000000000 -0500
++++ src/bind-9.5.0-P1/configure.in	2008-07-09 00:27:04.093750000 -0500
+@@ -24,7 +24,7 @@
+ AC_PREREQ(2.59)
+ 
+ AC_CONFIG_HEADER(config.h)
+-AC_CONFIG_SUBDIRS(lib/bind)
++dnl AC_CONFIG_SUBDIRS(lib/bind)
+ 
+ AC_CANONICAL_HOST
+ 

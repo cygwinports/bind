@@ -4,6 +4,7 @@ DESCRIPTION="DNS libraries and utilities suite"
 HOMEPAGE="http://www.isc.org/sw/bind/"
 SRC_URI="http://ftp.isc.org/isc/${PN}${PV_MAJ}/${_pv}/${PN}-${_pv}.tar.gz
          http://ftp.isc.org/isc/${PN}${PV_MAJ}/${_pv}/${PN}-${_pv}.tar.gz.asc"
+PATCH_URI="9.5.0-no-undefined.patch 9.5.0-old-libbind.patch"
 SRC_DIR="${PN}-${_pv}"
 
 PKG_NAMES="bind"
@@ -11,7 +12,7 @@ PKG_HINTS="setup"
 PKG_CONTENTS[0]='--exclude=man3 usr/bin/*.exe usr/sbin/ usr/share/'
 
 libs="bind9 dns isc isccc isccfg lwres"
-apis=(_40   43  41  40    40     40)
+apis=(_40   43  44  40    40     40)
 n=0
 for l in ${libs}
 do

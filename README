@@ -11,7 +11,7 @@ Build requirements:
 (besides corresponding -devel packages)
   autoconf2.5-2.61-1
   automake1.10-1.10.1-1
-  binutils-20080523-1
+  binutils-20080523-2
   cygport-0.3.12-1
   gawk-3.1.6-1
   gcc-core-3.4.4-3
@@ -28,27 +28,27 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack bind-9.5.0-X-src.tar.bz2
+  unpack bind-9.5.0_p2-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./bind-9.5.0-X.cygport all
+  cygport ./bind-9.5.0_p2-X.cygport all
 
 This will create:
-  /usr/src/bind-9.5.0-X-src.tar.bz2
-  /usr/src/bind-9.5.0-X.tar.bz2
-  /usr/src/libbind9-devel-9.5.0-X.tar.bz2
-  /usr/src/libbind9_40-9.5.0-X.tar.bz2
-  /usr/src/libdns-devel-9.5.0-X.tar.bz2
-  /usr/src/libdns43-9.5.0-X.tar.bz2
-  /usr/src/libisc-devel-9.5.0-X.tar.bz2
-  /usr/src/libisc41-9.5.0-X.tar.bz2
-  /usr/src/libisccc-devel-9.5.0-X.tar.bz2
-  /usr/src/libisccc40-9.5.0-X.tar.bz2
-  /usr/src/libisccfg-devel-9.5.0-X.tar.bz2
-  /usr/src/libisccfg40-9.5.0-X.tar.bz2
-  /usr/src/liblwres-devel-9.5.0-X.tar.bz2
-  /usr/src/liblwres40-9.5.0-X.tar.bz2
+  /usr/src/bind-9.5.0_p2-X-src.tar.bz2
+  /usr/src/bind-9.5.0_p2-X.tar.bz2
+  /usr/src/libbind9-devel-9.5.0_p2-X.tar.bz2
+  /usr/src/libbind9_40-9.5.0_p2-X.tar.bz2
+  /usr/src/libdns-devel-9.5.0_p2-X.tar.bz2
+  /usr/src/libdns43-9.5.0_p2-X.tar.bz2
+  /usr/src/libisc-devel-9.5.0_p2-X.tar.bz2
+  /usr/src/libisc44-9.5.0_p2-X.tar.bz2
+  /usr/src/libisccc-devel-9.5.0_p2-X.tar.bz2
+  /usr/src/libisccc40-9.5.0_p2-X.tar.bz2
+  /usr/src/libisccfg-devel-9.5.0_p2-X.tar.bz2
+  /usr/src/libisccfg40-9.5.0_p2-X.tar.bz2
+  /usr/src/liblwres-devel-9.5.0_p2-X.tar.bz2
+  /usr/src/liblwres40-9.5.0_p2-X.tar.bz2
 
 -------------------------------------------
 
@@ -68,10 +68,10 @@ Files included in the binary packages:
   /usr/sbin/named.exe
   /usr/sbin/rndc-confgen.exe
   /usr/sbin/rndc.exe
-  /usr/share/doc/bind-9.4.1/COPYRIGHT
-  /usr/share/doc/bind-9.4.1/Changes
-  /usr/share/doc/bind-9.4.1/FAQ
-  /usr/share/doc/bind-9.4.1/README
+  /usr/share/doc/bind-9.5.0_p2/COPYRIGHT
+  /usr/share/doc/bind-9.5.0_p2/Changes
+  /usr/share/doc/bind-9.5.0_p2/FAQ
+  /usr/share/doc/bind-9.5.0_p2/README
   /usr/share/man/man1/dig.1.gz
   /usr/share/man/man1/host.1.gz
   /usr/share/man/man1/nslookup.1.gz
@@ -94,8 +94,8 @@ Files included in the binary packages:
 (libdns43)
   /usr/bin/cygdns-43.dll
 
-(libisc41)
-  /usr/bin/cygisc-41.dll
+(libisc44)
+  /usr/bin/cygisc-44.dll
 
 (libisccc40)
   /usr/bin/cygisccc-40.dll
@@ -402,6 +402,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 9.5.0_p2-1 -----
+Version bump.
 
 ----- version 9.5.0_p1-1 -----
 Upstream security patch for CVE-2008-1447.
