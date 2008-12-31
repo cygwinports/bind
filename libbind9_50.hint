@@ -1,5 +1,5 @@
-category: Net Libs
-requires: cygwin libdns43 libisc44 libisccfg40
+category: Net
+requires: cygwin libdns50 libisc50 libisccfg50
 external-source: bind
 sdesc: "DNS libraries and utilities suite (Bind9 library)"
 ldesc: "DNS libraries and utilities suite"

@@ -4,18 +4,18 @@ DNS libraries and utilities suite
 
 Runtime requirements:
   cygwin-1.5.25-15
-  libxml2-2.6.32-1
-  openssl-0.9.8h-1
+  libxml2-2.7.2-1
+  openssl-0.9.8i-1
 
 Build requirements:
 (besides corresponding -devel packages)
-  autoconf2.5-2.61-1
-  automake1.10-1.10.1-1
-  binutils-20080523-2
-  cygport-0.3.12-1
+  autoconf2.5-2.63-1
+  automake1.10-1.10.1-2
+  binutils-20080624-2
+  cygport-0.4.3-1
   gawk-3.1.6-1
   gcc-core-3.4.4-3
-  libtool-2.2.2-2
+  libtool-2.2.6a-1
   make-3.81-1
   sed-4.1.5-2
 
@@ -28,37 +28,40 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack bind-9.5.0_p2-X-src.tar.bz2
+  unpack bind-9.6.0-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./bind-9.5.0_p2-X.cygport all
+  cygport ./bind-9.6.0-X.cygport all
 
 This will create:
-  /usr/src/bind-9.5.0_p2-X-src.tar.bz2
-  /usr/src/bind-9.5.0_p2-X.tar.bz2
-  /usr/src/libbind9-devel-9.5.0_p2-X.tar.bz2
-  /usr/src/libbind9_40-9.5.0_p2-X.tar.bz2
-  /usr/src/libdns-devel-9.5.0_p2-X.tar.bz2
-  /usr/src/libdns43-9.5.0_p2-X.tar.bz2
-  /usr/src/libisc-devel-9.5.0_p2-X.tar.bz2
-  /usr/src/libisc44-9.5.0_p2-X.tar.bz2
-  /usr/src/libisccc-devel-9.5.0_p2-X.tar.bz2
-  /usr/src/libisccc40-9.5.0_p2-X.tar.bz2
-  /usr/src/libisccfg-devel-9.5.0_p2-X.tar.bz2
-  /usr/src/libisccfg40-9.5.0_p2-X.tar.bz2
-  /usr/src/liblwres-devel-9.5.0_p2-X.tar.bz2
-  /usr/src/liblwres40-9.5.0_p2-X.tar.bz2
+  /usr/src/bind-9.6.0-X-src.tar.bz2
+  /usr/src/bind-9.6.0-X.tar.bz2
+  /usr/src/libbind9-devel-9.6.0-X.tar.bz2
+  /usr/src/libbind9_50-9.6.0-X.tar.bz2
+  /usr/src/libdns-devel-9.6.0-X.tar.bz2
+  /usr/src/libdns50-9.6.0-X.tar.bz2
+  /usr/src/libisc-devel-9.6.0-X.tar.bz2
+  /usr/src/libisc50-9.6.0-X.tar.bz2
+  /usr/src/libisccc-devel-9.6.0-X.tar.bz2
+  /usr/src/libisccc50-9.6.0-X.tar.bz2
+  /usr/src/libisccfg-devel-9.6.0-X.tar.bz2
+  /usr/src/libisccfg50-9.6.0-X.tar.bz2
+  /usr/src/liblwres-devel-9.6.0-X.tar.bz2
+  /usr/src/liblwres50-9.6.0-X.tar.bz2
 
 -------------------------------------------
 
 Files included in the binary packages:
+
 
 (bind)
   /usr/bin/dig.exe
   /usr/bin/host.exe
   /usr/bin/nslookup.exe
   /usr/bin/nsupdate.exe
+  /usr/sbin/dnssec-dsfromkey.exe
+  /usr/sbin/dnssec-keyfromlabel.exe
   /usr/sbin/dnssec-keygen.exe
   /usr/sbin/dnssec-signzone.exe
   /usr/sbin/lwresd.exe
@@ -68,43 +71,29 @@ Files included in the binary packages:
   /usr/sbin/named.exe
   /usr/sbin/rndc-confgen.exe
   /usr/sbin/rndc.exe
-  /usr/share/doc/bind-9.5.0_p2/COPYRIGHT
-  /usr/share/doc/bind-9.5.0_p2/Changes
-  /usr/share/doc/bind-9.5.0_p2/FAQ
-  /usr/share/doc/bind-9.5.0_p2/README
+  /usr/share/doc/bind-9.6.0/COPYRIGHT
+  /usr/share/doc/bind-9.6.0/FAQ
+  /usr/share/doc/bind-9.6.0/README
   /usr/share/man/man1/dig.1.gz
   /usr/share/man/man1/host.1.gz
   /usr/share/man/man1/nslookup.1.gz
-  /usr/share/man/man5/named.conf.5.gz
-  /usr/share/man/man5/rndc.conf.5.gz
-  /usr/share/man/man8/dnssec-keygen.8.gz
-  /usr/share/man/man8/dnssec-signzone.8.gz
-  /usr/share/man/man8/lwresd.8.gz
-  /usr/share/man/man8/named-checkconf.8.gz
-  /usr/share/man/man8/named-checkzone.8.gz
+  /usr/share/man/man1/nsupdate.1.gz
+  /usr/share/man/man5/named.conf.5
+  /usr/share/man/man5/rndc.conf.5
+  /usr/share/man/man8/dnssec-dsfromkey.8
+  /usr/share/man/man8/dnssec-keyfromlabel.8
+  /usr/share/man/man8/dnssec-keygen.8
+  /usr/share/man/man8/dnssec-signzone.8
+  /usr/share/man/man8/lwresd.8
+  /usr/share/man/man8/named-checkconf.8
+  /usr/share/man/man8/named-checkzone.8
   /usr/share/man/man8/named-compilezone.8
-  /usr/share/man/man8/named.8.gz
-  /usr/share/man/man8/nsupdate.8.gz
-  /usr/share/man/man8/rndc-confgen.8.gz
-  /usr/share/man/man8/rndc.8.gz
+  /usr/share/man/man8/named.8
+  /usr/share/man/man8/rndc-confgen.8
+  /usr/share/man/man8/rndc.8
 
-(libbind9_40)
-  /usr/bin/cygbind9-40.dll
-
-(libdns43)
-  /usr/bin/cygdns-43.dll
-
-(libisc44)
-  /usr/bin/cygisc-44.dll
-
-(libisccc40)
-  /usr/bin/cygisccc-40.dll
-
-(libisccfg40)
-  /usr/bin/cygisccfg-40.dll
-
-(liblwres40)
-  /usr/bin/cyglwres-40.dll
+(libbind9_50)
+  /usr/bin/cygbind9-50.dll
 
 (libbind9-devel)
   /usr/include/bind9/check.h
@@ -113,6 +102,9 @@ Files included in the binary packages:
   /usr/lib/libbind9.a
   /usr/lib/libbind9.dll.a
   /usr/lib/libbind9.la
+
+(libdns50)
+  /usr/bin/cygdns-50.dll
 
 (libdns-devel)
   /usr/include/dns/acl.h
@@ -127,12 +119,14 @@ Files included in the binary packages:
   /usr/include/dns/dbtable.h
   /usr/include/dns/diff.h
   /usr/include/dns/dispatch.h
+  /usr/include/dns/dlz.h
   /usr/include/dns/dnssec.h
   /usr/include/dns/ds.h
   /usr/include/dns/enumclass.h
   /usr/include/dns/enumtype.h
   /usr/include/dns/events.h
   /usr/include/dns/fixedname.h
+  /usr/include/dns/iptable.h
   /usr/include/dns/journal.h
   /usr/include/dns/keyflags.h
   /usr/include/dns/keytable.h
@@ -162,6 +156,7 @@ Files included in the binary packages:
   /usr/include/dns/result.h
   /usr/include/dns/rootns.h
   /usr/include/dns/sdb.h
+  /usr/include/dns/sdlz.h
   /usr/include/dns/secalg.h
   /usr/include/dns/secproto.h
   /usr/include/dns/soa.h
@@ -180,16 +175,21 @@ Files included in the binary packages:
   /usr/include/dns/zonekey.h
   /usr/include/dns/zt.h
   /usr/include/dst/dst.h
+  /usr/include/dst/gssapi.h
   /usr/include/dst/lib.h
   /usr/include/dst/result.h
   /usr/lib/libdns.a
   /usr/lib/libdns.dll.a
   /usr/lib/libdns.la
 
+(libisc50)
+  /usr/bin/cygisc-50.dll
+
 (libisc-devel)
   /usr/bin/isc-config.sh
   /usr/include/isc/app.h
   /usr/include/isc/assertions.h
+  /usr/include/isc/atomic.h
   /usr/include/isc/base64.h
   /usr/include/isc/bitstring.h
   /usr/include/isc/boolean.h
@@ -209,6 +209,7 @@ Files included in the binary packages:
   /usr/include/isc/heap.h
   /usr/include/isc/hex.h
   /usr/include/isc/hmacmd5.h
+  /usr/include/isc/httpd.h
   /usr/include/isc/int.h
   /usr/include/isc/interfaceiter.h
   /usr/include/isc/ipv6.h
@@ -236,6 +237,7 @@ Files included in the binary packages:
   /usr/include/isc/platform.h
   /usr/include/isc/print.h
   /usr/include/isc/quota.h
+  /usr/include/isc/radix.h
   /usr/include/isc/random.h
   /usr/include/isc/ratelimiter.h
   /usr/include/isc/refcount.h
@@ -263,9 +265,13 @@ Files included in the binary packages:
   /usr/include/isc/types.h
   /usr/include/isc/util.h
   /usr/include/isc/version.h
+  /usr/include/isc/xml.h
   /usr/lib/libisc.a
   /usr/lib/libisc.dll.a
   /usr/lib/libisc.la
+
+(libisccfg50)
+  /usr/bin/cygisccfg-50.dll
 
 (libisccc-devel)
   /usr/include/isccc/alist.h
@@ -285,6 +291,9 @@ Files included in the binary packages:
   /usr/lib/libisccc.dll.a
   /usr/lib/libisccc.la
 
+(libisccc50)
+  /usr/bin/cygisccc-50.dll
+
 (libisccfg-devel)
   /usr/include/isccfg/aclconf.h
   /usr/include/isccfg/cfg.h
@@ -295,6 +304,9 @@ Files included in the binary packages:
   /usr/lib/libisccfg.a
   /usr/lib/libisccfg.dll.a
   /usr/lib/libisccfg.la
+
+(liblwres50)
+  /usr/bin/cyglwres-50.dll
 
 (liblwres-devel)
   /usr/include/lwres/context.h
@@ -357,7 +369,7 @@ Files included in the binary packages:
   /usr/share/man/man3/lwres_gabnresponse_free.3
   /usr/share/man/man3/lwres_gabnresponse_parse.3
   /usr/share/man/man3/lwres_gabnresponse_render.3
-  /usr/share/man/man3/lwres_gai_strerror.3.gz
+  /usr/share/man/man3/lwres_gai_strerror.3
   /usr/share/man/man3/lwres_getaddrinfo.3
   /usr/share/man/man3/lwres_getaddrsbyname.3
   /usr/share/man/man3/lwres_gethostbyaddr.3
@@ -371,8 +383,8 @@ Files included in the binary packages:
   /usr/share/man/man3/lwres_getipnodebyaddr.3
   /usr/share/man/man3/lwres_getipnodebyname.3
   /usr/share/man/man3/lwres_getnamebyaddr.3
-  /usr/share/man/man3/lwres_getnameinfo.3.gz
-  /usr/share/man/man3/lwres_getrrsetbyname.3.gz
+  /usr/share/man/man3/lwres_getnameinfo.3
+  /usr/share/man/man3/lwres_getrrsetbyname.3
   /usr/share/man/man3/lwres_gnba.3
   /usr/share/man/man3/lwres_gnbarequest_free.3
   /usr/share/man/man3/lwres_gnbarequest_parse.3
@@ -402,6 +414,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 9.6.0-1 -----
+Version bump.
 
 ----- version 9.5.0_p2-1 -----
 Version bump.

@@ -1,5 +1,5 @@
-category: Net Libs
-requires: cygwin libisccfg40 libdns-devel libisc-devel
+category: Net
+requires: cygwin libdns50 libisc50
 external-source: bind
 sdesc: "DNS libraries and utilities suite (ISCCFG library)"
 ldesc: "DNS libraries and utilities suite"
