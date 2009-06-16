@@ -10,7 +10,7 @@ SRC_DIR="${PN}-${_pv}"
 USE_MANAGED_MOUNT=1
 
 PKG_NAMES="bind"
-bind_CONTENTS='--exclude=man3 usr/bin/*.exe usr/sbin/ usr/share/'
+bind_CONTENTS='--exclude=man3 usr/bin/*.exe* usr/sbin/ usr/share/'
 
 libs="bind9 dns isc isccc isccfg lwres"
 apis=(_50   50  50  50    50     50)
