@@ -1,5 +1,5 @@
 category: Net
-requires: cygwin liblwres50 libisc-devel
+requires: liblwres50 libisc-devel
 external-source: bind
 sdesc: "DNS libraries and utilities suite (LWRES library)"
 ldesc: "DNS libraries and utilities suite"

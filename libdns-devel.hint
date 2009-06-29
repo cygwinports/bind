@@ -1,5 +1,5 @@
 category: Net
-requires: cygwin libdns50 libisc-devel openssl-devel
+requires: libdns50 libisc-devel openssl-devel
 external-source: bind
 sdesc: "DNS libraries and utilities suite (DNS library)"
 ldesc: "DNS libraries and utilities suite"
