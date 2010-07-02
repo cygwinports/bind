@@ -1,0 +1,41 @@
+--- origsrc/bind-9.7.1/lib/lwres/Makefile.in	2010-07-01 13:09:41.870012400 -0500
++++ src/bind-9.7.1/lib/lwres/Makefile.in	2010-07-01 13:15:17.903232400 -0500
+@@ -46,7 +46,7 @@ SRCS =		context.c gai_strerror.c getaddr
+ 		lwinetaton.c lwinetpton.c lwinetntop.c print.c \
+ 		strtoul.c
+ 
+-LIBS =		@LIBS@
++LIBS =		@LIBS@ -liphlpapi
+ 
+ SUBDIRS =	include man unix
+ TARGETS =	timestamp
+--- origsrc/bind-9.7.1/lib/lwres/lwconfig.c	2008-12-17 17:47:58.000000000 -0600
++++ src/bind-9.7.1/lib/lwres/lwconfig.c	2010-07-01 02:40:22.549302800 -0500
+@@ -53,6 +53,11 @@
+  *    /etc/resolv.conf
+  */
+ 
++#if defined(__CYGWIN__) && !defined(CYGWIN_LWCONFIG_C)
++#define CYGWIN_LWCONFIG_C
++#include "win32/lwconfig.c"
++#else
++
+ #include <config.h>
+ 
+ #include <assert.h>
+@@ -726,3 +731,5 @@ lwres_conf_get(lwres_context_t *ctx) {
+ 
+ 	return (&ctx->confdata);
+ }
++
++#endif /* __CYGWIN__ */
+--- origsrc/bind-9.7.1/lib/lwres/win32/lwconfig.c	2007-12-13 19:40:42.000000000 -0600
++++ src/bind-9.7.1/lib/lwres/win32/lwconfig.c	2010-07-01 04:00:44.476101200 -0500
+@@ -39,6 +39,7 @@
+ #include "../lwconfig.c"
+ #undef lwres_conf_parse
+ 
++#include <windows.h>
+ #include <iphlpapi.h>
+ 
+ #define TCPIP_SUBKEY	\

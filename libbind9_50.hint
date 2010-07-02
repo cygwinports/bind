@@ -1,5 +1,0 @@
-category: Net
-requires: libdns50 libgcc1 libisc50 libisccfg50
-external-source: bind
-sdesc: "DNS libraries and utilities suite (Bind9 library)"
-ldesc: "DNS libraries and utilities suite"

@@ -1,5 +1,0 @@
-category: Net
-requires: libgcc1 libisc50 openssl
-external-source: bind
-sdesc: "DNS libraries and utilities suite (DNS library)"
-ldesc: "DNS libraries and utilities suite"

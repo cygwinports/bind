@@ -1,5 +1,5 @@
 category: Net
-requires: liblwres50 libisc-devel
+requires: liblwres60 libisc-devel
 external-source: bind
-sdesc: "DNS libraries and utilities suite (LWRES library)"
+sdesc: "BIND Lightweight Resolver library (development)"
 ldesc: "DNS libraries and utilities suite"

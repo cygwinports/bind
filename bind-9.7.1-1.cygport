@@ -1,0 +1,52 @@
+_pv=${PV/_p/-P}
+
+DESCRIPTION="DNS libraries and utilities suite"
+HOMEPAGE="http://www.isc.org/software/bind/"
+SRC_URI="http://ftp.isc.org/isc/${PN}${PV_MAJ}/${_pv}/${PN}-${_pv}.tar.gz
+         http://ftp.isc.org/isc/${PN}${PV_MAJ}/${_pv}/${PN}-${_pv}.tar.gz.asc"
+SRC_DIR="${PN}-${_pv}"
+
+PATCH_URI="
+	http://cvs.fedoraproject.org/viewvc/devel/bind/bind-9.5-libidn.patch?view=co
+	http://cvs.fedoraproject.org/viewvc/devel/bind/bind-9.5-libidn2.patch?view=co
+	http://cvs.fedoraproject.org/viewvc/devel/bind/bind-9.5-libidn3.patch?view=co
+	http://cvs.fedoraproject.org/viewvc/devel/bind/bind95-rh461409.patch?view=co
+	http://cvs.fedoraproject.org/viewvc/devel/bind/bind-9.5-parallel-build.patch?view=co
+	9.7.1-configure.patch
+	9.7.1-lwconfig-win32.patch
+	9.7.1-no-undefined.patch
+"
+
+PKG_NAMES="bind"
+bind_CONTENTS='--exclude=man3 etc/ usr/bin/*.exe* usr/sbin/ usr/share/'
+
+libs="bind9 dns isc isccc isccfg lwres"
+apis=(_60   66  60  60    60     60)
+n=0
+for l in ${libs}
+do
+	api=${apis[$((n++))]}
+	PKG_NAMES+=" lib${l}${api} lib${l}-devel"
+	declare lib${l}${api}_CONTENTS="usr/bin/cyg${l}-${api#_}.dll"
+	declare lib${l}_devel_CONTENTS="usr/include/${l}/ usr/lib/lib${l}.*"
+done
+unset libs api apis l n
+
+libdns_devel_CONTENTS+=" usr/include/dst/"
+libisc_devel_CONTENTS+=" usr/bin/isc-config.sh"
+liblwres_devel_CONTENTS+=" usr/share/man/man3/lwres*"
+
+DISTCLEANFILES="aclocal.m4 libtool.m4"
+
+CYGCONF_ARGS="
+	--disable-backtrace
+	--disable-linux-caps
+	--with-dlz-filesystem
+	--with-dlz-ldap=/usr
+	--with-dlz-postgres
+	--with-docbook-xsl=/usr/share/sgml/docbook/xsl-stylesheets
+	--with-libiconv=/usr
+	--with-libtool
+	--with-libxml2=/usr
+	--with-openssl=/usr
+"

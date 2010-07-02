@@ -3,25 +3,29 @@ bind
 DNS libraries and utilities suite
 
 Runtime requirements:
-  cygwin-1.7.0-49
-  libgcc1-4.3.2-2
-  libxml2-2.7.3-10
-  openssl-0.9.8k-2
+  cygwin-1.7.5-1
+  libgcc1-4.3.4-3
+  libidn11-1.18-1
+  libopenldap2_3_0-2.3.43-1
+  libpq5-8.2.11-1
+  libopenssl098-0.9.8o-1
+  libxml2-2.7.7-1
 
 Build requirements:
 (besides corresponding -devel packages)
-  autoconf2.5-2.63-10
-  automake1.10-1.10.2-10
-  binutils-20080624-2
-  cygport-0.9.6-1
-  gawk-3.1.6-2
-  gcc4-core-4.3.2-2
-  libtool-2.2.7a-12
+  autoconf2.5-2.65-1
+  automake1.10-1.10.3-1
+  binutils-2.20.51-2
+  cygport-0.9.85-1
+  gawk-3.1.7-1
+  gcc4-core-4.3.4-3
+  libtool-2.2.7a-15
   make-3.81-2
-  sed-4.1.5-2
+  sed-4.2.1-1
+  w32api-3.14-1
 
 Canonical website:
-  http://www.isc.org/sw/bind/
+  http://www.isc.org/software/bind/
 
 Canonical download:
   http://ftp.isc.org/isc/bind9/
@@ -29,392 +33,36 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack bind-9.6.0_p1-X-src.tar.bz2
+  unpack bind-9.7.1-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./bind-9.6.0_p1-X.cygport all
+  cygport ./bind-9.7.1-X.cygport all
 
 This will create:
-  /usr/src/bind-9.6.0_p1-X-src.tar.bz2
-  /usr/src/bind-9.6.0_p1-X.tar.bz2
-  /usr/src/libbind9-devel-9.6.0_p1-X.tar.bz2
-  /usr/src/libbind9_50-9.6.0_p1-X.tar.bz2
-  /usr/src/libdns-devel-9.6.0_p1-X.tar.bz2
-  /usr/src/libdns50-9.6.0_p1-X.tar.bz2
-  /usr/src/libisc-devel-9.6.0_p1-X.tar.bz2
-  /usr/src/libisc50-9.6.0_p1-X.tar.bz2
-  /usr/src/libisccc-devel-9.6.0_p1-X.tar.bz2
-  /usr/src/libisccc50-9.6.0_p1-X.tar.bz2
-  /usr/src/libisccfg-devel-9.6.0_p1-X.tar.bz2
-  /usr/src/libisccfg50-9.6.0_p1-X.tar.bz2
-  /usr/src/liblwres-devel-9.6.0_p1-X.tar.bz2
-  /usr/src/liblwres50-9.6.0_p1-X.tar.bz2
+  /usr/src/bind-9.7.1-X-src.tar.bz2
+  /usr/src/bind-9.7.1-X.tar.bz2
+  /usr/src/libbind9-devel-9.7.1-X.tar.bz2
+  /usr/src/libbind9_60-9.7.1-X.tar.bz2
+  /usr/src/libdns-devel-9.7.1-X.tar.bz2
+  /usr/src/libdns66-9.7.1-X.tar.bz2
+  /usr/src/libisc-devel-9.7.1-X.tar.bz2
+  /usr/src/libisc60-9.7.1-X.tar.bz2
+  /usr/src/libisccc-devel-9.7.1-X.tar.bz2
+  /usr/src/libisccc60-9.7.1-X.tar.bz2
+  /usr/src/libisccfg-devel-9.7.1-X.tar.bz2
+  /usr/src/libisccfg60-9.7.1-X.tar.bz2
+  /usr/src/liblwres-devel-9.7.1-X.tar.bz2
+  /usr/src/liblwres60-9.7.1-X.tar.bz2
 
 -------------------------------------------
 
-Files included in the binary packages:
-
-(bind)
-  /usr/bin/dig.exe
-  /usr/bin/host.exe
-  /usr/bin/nslookup.exe
-  /usr/bin/nsupdate.exe
-  /usr/bin/nsupdate.exe.manifest
-  /usr/sbin/dnssec-dsfromkey.exe
-  /usr/sbin/dnssec-keyfromlabel.exe
-  /usr/sbin/dnssec-keygen.exe
-  /usr/sbin/dnssec-signzone.exe
-  /usr/sbin/lwresd.exe
-  /usr/sbin/named-checkconf.exe
-  /usr/sbin/named-checkzone.exe
-  /usr/sbin/named-compilezone.exe
-  /usr/sbin/named.exe
-  /usr/sbin/rndc-confgen.exe
-  /usr/sbin/rndc.exe
-  /usr/share/doc/bind/COPYRIGHT
-  /usr/share/doc/bind/FAQ
-  /usr/share/doc/bind/README
-  /usr/share/man/man1/dig.1.gz
-  /usr/share/man/man1/host.1.gz
-  /usr/share/man/man1/nslookup.1.gz
-  /usr/share/man/man1/nsupdate.1.gz
-  /usr/share/man/man5/named.conf.5
-  /usr/share/man/man5/rndc.conf.5
-  /usr/share/man/man8/dnssec-dsfromkey.8
-  /usr/share/man/man8/dnssec-keyfromlabel.8
-  /usr/share/man/man8/dnssec-keygen.8
-  /usr/share/man/man8/dnssec-signzone.8
-  /usr/share/man/man8/lwresd.8
-  /usr/share/man/man8/named-checkconf.8
-  /usr/share/man/man8/named-checkzone.8
-  /usr/share/man/man8/named-compilezone.8
-  /usr/share/man/man8/named.8
-  /usr/share/man/man8/rndc-confgen.8
-  /usr/share/man/man8/rndc.8
-
-(libbind9_50)
-  /usr/bin/cygbind9-50.dll
-
-(libbind9-devel)
-  /usr/include/bind9/check.h
-  /usr/include/bind9/getaddresses.h
-  /usr/include/bind9/version.h
-  /usr/lib/libbind9.a
-  /usr/lib/libbind9.dll.a
-  /usr/lib/libbind9.la
-
-(libdns50)
-  /usr/bin/cygdns-50.dll
-
-(libdns-devel)
-  /usr/include/dns/acl.h
-  /usr/include/dns/adb.h
-  /usr/include/dns/byaddr.h
-  /usr/include/dns/cache.h
-  /usr/include/dns/callbacks.h
-  /usr/include/dns/cert.h
-  /usr/include/dns/compress.h
-  /usr/include/dns/db.h
-  /usr/include/dns/dbiterator.h
-  /usr/include/dns/dbtable.h
-  /usr/include/dns/diff.h
-  /usr/include/dns/dispatch.h
-  /usr/include/dns/dlz.h
-  /usr/include/dns/dnssec.h
-  /usr/include/dns/ds.h
-  /usr/include/dns/enumclass.h
-  /usr/include/dns/enumtype.h
-  /usr/include/dns/events.h
-  /usr/include/dns/fixedname.h
-  /usr/include/dns/iptable.h
-  /usr/include/dns/journal.h
-  /usr/include/dns/keyflags.h
-  /usr/include/dns/keytable.h
-  /usr/include/dns/keyvalues.h
-  /usr/include/dns/lib.h
-  /usr/include/dns/log.h
-  /usr/include/dns/master.h
-  /usr/include/dns/masterdump.h
-  /usr/include/dns/message.h
-  /usr/include/dns/name.h
-  /usr/include/dns/ncache.h
-  /usr/include/dns/nsec.h
-  /usr/include/dns/peer.h
-  /usr/include/dns/portlist.h
-  /usr/include/dns/rbt.h
-  /usr/include/dns/rcode.h
-  /usr/include/dns/rdata.h
-  /usr/include/dns/rdataclass.h
-  /usr/include/dns/rdatalist.h
-  /usr/include/dns/rdataset.h
-  /usr/include/dns/rdatasetiter.h
-  /usr/include/dns/rdataslab.h
-  /usr/include/dns/rdatastruct.h
-  /usr/include/dns/rdatatype.h
-  /usr/include/dns/request.h
-  /usr/include/dns/resolver.h
-  /usr/include/dns/result.h
-  /usr/include/dns/rootns.h
-  /usr/include/dns/sdb.h
-  /usr/include/dns/sdlz.h
-  /usr/include/dns/secalg.h
-  /usr/include/dns/secproto.h
-  /usr/include/dns/soa.h
-  /usr/include/dns/ssu.h
-  /usr/include/dns/tcpmsg.h
-  /usr/include/dns/time.h
-  /usr/include/dns/tkey.h
-  /usr/include/dns/tsig.h
-  /usr/include/dns/ttl.h
-  /usr/include/dns/types.h
-  /usr/include/dns/validator.h
-  /usr/include/dns/version.h
-  /usr/include/dns/view.h
-  /usr/include/dns/xfrin.h
-  /usr/include/dns/zone.h
-  /usr/include/dns/zonekey.h
-  /usr/include/dns/zt.h
-  /usr/include/dst/dst.h
-  /usr/include/dst/gssapi.h
-  /usr/include/dst/lib.h
-  /usr/include/dst/result.h
-  /usr/lib/libdns.a
-  /usr/lib/libdns.dll.a
-  /usr/lib/libdns.la
-
-(libisc50)
-  /usr/bin/cygisc-50.dll
-
-(libisc-devel)
-  /usr/bin/isc-config.sh
-  /usr/include/isc/app.h
-  /usr/include/isc/assertions.h
-  /usr/include/isc/atomic.h
-  /usr/include/isc/base64.h
-  /usr/include/isc/bitstring.h
-  /usr/include/isc/boolean.h
-  /usr/include/isc/buffer.h
-  /usr/include/isc/bufferlist.h
-  /usr/include/isc/commandline.h
-  /usr/include/isc/condition.h
-  /usr/include/isc/dir.h
-  /usr/include/isc/entropy.h
-  /usr/include/isc/error.h
-  /usr/include/isc/event.h
-  /usr/include/isc/eventclass.h
-  /usr/include/isc/file.h
-  /usr/include/isc/formatcheck.h
-  /usr/include/isc/fsaccess.h
-  /usr/include/isc/hash.h
-  /usr/include/isc/heap.h
-  /usr/include/isc/hex.h
-  /usr/include/isc/hmacmd5.h
-  /usr/include/isc/httpd.h
-  /usr/include/isc/int.h
-  /usr/include/isc/interfaceiter.h
-  /usr/include/isc/ipv6.h
-  /usr/include/isc/lang.h
-  /usr/include/isc/lex.h
-  /usr/include/isc/lfsr.h
-  /usr/include/isc/lib.h
-  /usr/include/isc/list.h
-  /usr/include/isc/log.h
-  /usr/include/isc/magic.h
-  /usr/include/isc/md5.h
-  /usr/include/isc/mem.h
-  /usr/include/isc/msgcat.h
-  /usr/include/isc/msgs.h
-  /usr/include/isc/mutex.h
-  /usr/include/isc/mutexblock.h
-  /usr/include/isc/net.h
-  /usr/include/isc/netaddr.h
-  /usr/include/isc/netdb.h
-  /usr/include/isc/offset.h
-  /usr/include/isc/once.h
-  /usr/include/isc/ondestroy.h
-  /usr/include/isc/os.h
-  /usr/include/isc/parseint.h
-  /usr/include/isc/platform.h
-  /usr/include/isc/print.h
-  /usr/include/isc/quota.h
-  /usr/include/isc/radix.h
-  /usr/include/isc/random.h
-  /usr/include/isc/ratelimiter.h
-  /usr/include/isc/refcount.h
-  /usr/include/isc/region.h
-  /usr/include/isc/resource.h
-  /usr/include/isc/result.h
-  /usr/include/isc/resultclass.h
-  /usr/include/isc/rwlock.h
-  /usr/include/isc/serial.h
-  /usr/include/isc/sha1.h
-  /usr/include/isc/sha2.h
-  /usr/include/isc/sockaddr.h
-  /usr/include/isc/socket.h
-  /usr/include/isc/stdio.h
-  /usr/include/isc/stdlib.h
-  /usr/include/isc/stdtime.h
-  /usr/include/isc/string.h
-  /usr/include/isc/symtab.h
-  /usr/include/isc/syslog.h
-  /usr/include/isc/task.h
-  /usr/include/isc/taskpool.h
-  /usr/include/isc/thread.h
-  /usr/include/isc/time.h
-  /usr/include/isc/timer.h
-  /usr/include/isc/types.h
-  /usr/include/isc/util.h
-  /usr/include/isc/version.h
-  /usr/include/isc/xml.h
-  /usr/lib/libisc.a
-  /usr/lib/libisc.dll.a
-  /usr/lib/libisc.la
-
-(libisccfg50)
-  /usr/bin/cygisccfg-50.dll
-
-(libisccc-devel)
-  /usr/include/isccc/alist.h
-  /usr/include/isccc/base64.h
-  /usr/include/isccc/cc.h
-  /usr/include/isccc/ccmsg.h
-  /usr/include/isccc/events.h
-  /usr/include/isccc/lib.h
-  /usr/include/isccc/result.h
-  /usr/include/isccc/sexpr.h
-  /usr/include/isccc/symtab.h
-  /usr/include/isccc/symtype.h
-  /usr/include/isccc/types.h
-  /usr/include/isccc/util.h
-  /usr/include/isccc/version.h
-  /usr/lib/libisccc.a
-  /usr/lib/libisccc.dll.a
-  /usr/lib/libisccc.la
-
-(libisccc50)
-  /usr/bin/cygisccc-50.dll
-
-(libisccfg-devel)
-  /usr/include/isccfg/aclconf.h
-  /usr/include/isccfg/cfg.h
-  /usr/include/isccfg/grammar.h
-  /usr/include/isccfg/log.h
-  /usr/include/isccfg/namedconf.h
-  /usr/include/isccfg/version.h
-  /usr/lib/libisccfg.a
-  /usr/lib/libisccfg.dll.a
-  /usr/lib/libisccfg.la
-
-(liblwres50)
-  /usr/bin/cyglwres-50.dll
-
-(liblwres-devel)
-  /usr/include/lwres/context.h
-  /usr/include/lwres/int.h
-  /usr/include/lwres/ipv6.h
-  /usr/include/lwres/lang.h
-  /usr/include/lwres/list.h
-  /usr/include/lwres/lwbuffer.h
-  /usr/include/lwres/lwpacket.h
-  /usr/include/lwres/lwres.h
-  /usr/include/lwres/net.h
-  /usr/include/lwres/netdb.h
-  /usr/include/lwres/platform.h
-  /usr/include/lwres/result.h
-  /usr/include/lwres/version.h
-  /usr/lib/liblwres.a
-  /usr/lib/liblwres.dll.a
-  /usr/lib/liblwres.la
-  /usr/share/man/man3/lwres.3.gz
-  /usr/share/man/man3/lwres_addr_parse.3
-  /usr/share/man/man3/lwres_buffer.3
-  /usr/share/man/man3/lwres_buffer_add.3
-  /usr/share/man/man3/lwres_buffer_back.3
-  /usr/share/man/man3/lwres_buffer_clear.3
-  /usr/share/man/man3/lwres_buffer_first.3
-  /usr/share/man/man3/lwres_buffer_forward.3
-  /usr/share/man/man3/lwres_buffer_getmem.3
-  /usr/share/man/man3/lwres_buffer_getuint16.3
-  /usr/share/man/man3/lwres_buffer_getuint32.3
-  /usr/share/man/man3/lwres_buffer_getuint8.3
-  /usr/share/man/man3/lwres_buffer_init.3
-  /usr/share/man/man3/lwres_buffer_invalidate.3
-  /usr/share/man/man3/lwres_buffer_putmem.3
-  /usr/share/man/man3/lwres_buffer_putuint16.3
-  /usr/share/man/man3/lwres_buffer_putuint32.3
-  /usr/share/man/man3/lwres_buffer_putuint8.3
-  /usr/share/man/man3/lwres_buffer_subtract.3
-  /usr/share/man/man3/lwres_conf_clear.3
-  /usr/share/man/man3/lwres_conf_get.3
-  /usr/share/man/man3/lwres_conf_init.3
-  /usr/share/man/man3/lwres_conf_parse.3
-  /usr/share/man/man3/lwres_conf_print.3
-  /usr/share/man/man3/lwres_config.3
-  /usr/share/man/man3/lwres_context.3
-  /usr/share/man/man3/lwres_context_allocmem.3
-  /usr/share/man/man3/lwres_context_create.3
-  /usr/share/man/man3/lwres_context_destroy.3
-  /usr/share/man/man3/lwres_context_freemem.3
-  /usr/share/man/man3/lwres_context_initserial.3
-  /usr/share/man/man3/lwres_context_nextserial.3
-  /usr/share/man/man3/lwres_context_sendrecv.3
-  /usr/share/man/man3/lwres_endhostent.3
-  /usr/share/man/man3/lwres_endhostent_r.3
-  /usr/share/man/man3/lwres_freeaddrinfo.3
-  /usr/share/man/man3/lwres_freehostent.3
-  /usr/share/man/man3/lwres_gabn.3
-  /usr/share/man/man3/lwres_gabnrequest_free.3
-  /usr/share/man/man3/lwres_gabnrequest_parse.3
-  /usr/share/man/man3/lwres_gabnrequest_render.3
-  /usr/share/man/man3/lwres_gabnresponse_free.3
-  /usr/share/man/man3/lwres_gabnresponse_parse.3
-  /usr/share/man/man3/lwres_gabnresponse_render.3
-  /usr/share/man/man3/lwres_gai_strerror.3
-  /usr/share/man/man3/lwres_getaddrinfo.3
-  /usr/share/man/man3/lwres_getaddrsbyname.3
-  /usr/share/man/man3/lwres_gethostbyaddr.3
-  /usr/share/man/man3/lwres_gethostbyaddr_r.3
-  /usr/share/man/man3/lwres_gethostbyname.3
-  /usr/share/man/man3/lwres_gethostbyname2.3
-  /usr/share/man/man3/lwres_gethostbyname_r.3
-  /usr/share/man/man3/lwres_gethostent.3
-  /usr/share/man/man3/lwres_gethostent_r.3
-  /usr/share/man/man3/lwres_getipnode.3
-  /usr/share/man/man3/lwres_getipnodebyaddr.3
-  /usr/share/man/man3/lwres_getipnodebyname.3
-  /usr/share/man/man3/lwres_getnamebyaddr.3
-  /usr/share/man/man3/lwres_getnameinfo.3
-  /usr/share/man/man3/lwres_getrrsetbyname.3
-  /usr/share/man/man3/lwres_gnba.3
-  /usr/share/man/man3/lwres_gnbarequest_free.3
-  /usr/share/man/man3/lwres_gnbarequest_parse.3
-  /usr/share/man/man3/lwres_gnbarequest_render.3
-  /usr/share/man/man3/lwres_gnbaresponse_free.3
-  /usr/share/man/man3/lwres_gnbaresponse_parse.3
-  /usr/share/man/man3/lwres_gnbaresponse_render.3
-  /usr/share/man/man3/lwres_herror.3
-  /usr/share/man/man3/lwres_hstrerror.3
-  /usr/share/man/man3/lwres_inetntop.3
-  /usr/share/man/man3/lwres_lwpacket_parseheader.3
-  /usr/share/man/man3/lwres_lwpacket_renderheader.3
-  /usr/share/man/man3/lwres_net_ntop.3
-  /usr/share/man/man3/lwres_noop.3
-  /usr/share/man/man3/lwres_nooprequest_free.3
-  /usr/share/man/man3/lwres_nooprequest_parse.3
-  /usr/share/man/man3/lwres_nooprequest_render.3
-  /usr/share/man/man3/lwres_noopresponse_free.3
-  /usr/share/man/man3/lwres_noopresponse_parse.3
-  /usr/share/man/man3/lwres_noopresponse_render.3
-  /usr/share/man/man3/lwres_packet.3
-  /usr/share/man/man3/lwres_resutil.3
-  /usr/share/man/man3/lwres_sethostent.3
-  /usr/share/man/man3/lwres_sethostent_r.3
-  /usr/share/man/man3/lwres_string_parse.3
-
-------------------
-
 Port Notes:
+
+----- version 9.7.1-1 -----
+Version bump.
+Added support for IDN, LDAP and PostgreSQL.
+liblwres no longer requires an /etc/resolv.conf file.
 
 ----- version 9.6.0_p1-1 -----
 Initial release for Cygwin 1.7.

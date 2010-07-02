@@ -1,4 +1,4 @@
 category: Net
-requires: libbind9_50 libdns50 libgcc1 libisc50 libisccc50 libisccfg50 liblwres50
-sdesc: "DNS libraries and utilities suite"
+requires: libbind9_60 libdns66 libgcc1 libidn11 libisc60 libisccc60 libisccfg60 liblwres60 libopenldap2_3_0 libpq5
+sdesc: "DNS utilities suite"
 ldesc: "DNS libraries and utilities suite"
