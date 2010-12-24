@@ -1,5 +1,5 @@
 category: Net
-requires: libdns66 libgcc1 libisc60 libisccfg60
+requires: libdns69 libisc62 libisccfg62
 external-source: bind
 sdesc: "BIND Bind9 library (runtime)"
 ldesc: "DNS libraries and utilities suite"

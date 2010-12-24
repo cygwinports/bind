@@ -7,21 +7,18 @@ SRC_URI="http://ftp.isc.org/isc/${PN}${PV_MAJ}/${_pv}/${PN}-${_pv}.tar.gz
 SRC_DIR="${PN}-${_pv}"
 
 PATCH_URI="
-	http://cvs.fedoraproject.org/viewvc/devel/bind/bind-9.5-libidn.patch?view=co
-	http://cvs.fedoraproject.org/viewvc/devel/bind/bind-9.5-libidn2.patch?view=co
-	http://cvs.fedoraproject.org/viewvc/devel/bind/bind-9.5-libidn3.patch?view=co
-	http://cvs.fedoraproject.org/viewvc/devel/bind/bind95-rh461409.patch?view=co
-	http://cvs.fedoraproject.org/viewvc/devel/bind/bind-9.5-parallel-build.patch?view=co
 	9.7.1-configure.patch
 	9.7.1-lwconfig-win32.patch
 	9.7.1-no-undefined.patch
+	9.7.2-libidn.patch
+	9.5.0-parallel-build.patch
 "
 
 PKG_NAMES="bind"
 bind_CONTENTS='--exclude=man3 etc/ usr/bin/*.exe* usr/sbin/ usr/share/'
 
 libs="bind9 dns isc isccc isccfg lwres"
-apis=(_60   66  60  60    60     60)
+apis=(_60   69  62  60    62     60)
 n=0
 for l in ${libs}
 do
