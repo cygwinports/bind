@@ -15,23 +15,9 @@ PATCH_URI="
 "
 
 PKG_NAMES="bind"
-bind_CONTENTS='--exclude=man3 etc/ usr/bin/*.exe* usr/sbin/ usr/share/'
-
-libs="bind9 dns isc isccc isccfg lwres"
-apis=(_60   69  62  60    62     60)
-n=0
-for l in ${libs}
-do
-	api=${apis[$((n++))]}
-	PKG_NAMES+=" lib${l}${api} lib${l}-devel"
-	declare lib${l}${api}_CONTENTS="usr/bin/cyg${l}-${api#_}.dll"
-	declare lib${l}_devel_CONTENTS="usr/include/${l}/ usr/lib/lib${l}.*"
-done
-unset libs api apis l n
-
-libdns_devel_CONTENTS+=" usr/include/dst/"
-libisc_devel_CONTENTS+=" usr/bin/isc-config.sh"
-liblwres_devel_CONTENTS+=" usr/share/man/man3/lwres*"
+bind_CONTENTS='--exclude=isc-config.sh --exclude=man3 etc/ usr/bin/ usr/sbin/ usr/share/'
+libbind9_devel_CONTENTS="usr/bin/isc-config.sh usr/include/ usr/lib/ usr/share/man/man3/"
+PKG_IGNORE=${libbind9_devel_CONTENTS}
 
 DISTCLEANFILES="aclocal.m4 libtool.m4"
 
@@ -39,10 +25,7 @@ CYGCONF_ARGS="
 	--disable-backtrace
 	--disable-linux-caps
 	--with-dlz-filesystem
-	--with-dlz-ldap=/usr
-	--with-dlz-postgres
 	--with-docbook-xsl=/usr/share/sgml/docbook/xsl-stylesheets
-	--with-libiconv=/usr
 	--with-libtool
 	--with-libxml2=/usr
 	--with-openssl=/usr

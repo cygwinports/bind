@@ -35,7 +35,7 @@
  		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o libisccc.la -rpath ${libdir} \
  		-version-info ${LIBINTERFACE}:${LIBREVISION}:${LIBAGE} \
 +		-no-undefined \
- 		${OBJS} ${LIBS} ${ISCLIBS}
+ 		${OBJS} ${ISCLIBS} ${LIBS}
  
  timestamp: libisccc.@A@
 --- origsrc/bind-9.7.1/lib/isccfg/Makefile.in	2010-07-01 13:09:41.866012200 -0500
@@ -45,7 +45,7 @@
  		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o libisccfg.la -rpath ${libdir} \
  		-version-info ${LIBINTERFACE}:${LIBREVISION}:${LIBAGE} \
 +		-no-undefined \
- 		${OBJS} ${LIBS} ${DNSLIBS} ${ISCCCLIBS} ${ISCLIBS}
+ 		${OBJS} ${DNSLIBS} ${ISCCCLIBS} ${ISCLIBS} ${LIBS}
  
  timestamp: libisccfg.@A@
 --- origsrc/bind-9.7.1/lib/lwres/Makefile.in	2010-07-01 13:09:41.870012400 -0500
