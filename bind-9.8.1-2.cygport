@@ -12,6 +12,7 @@ PATCH_URI="
 	9.7.1-no-undefined.patch
 	9.7.2-libidn.patch
 	9.5.0-parallel-build.patch
+	9.8.1-dlz-symbols.patch
 "
 
 PKG_NAMES="bind"
@@ -21,11 +22,16 @@ PKG_IGNORE=${libbind9_devel_CONTENTS}
 
 DISTCLEANFILES="aclocal.m4 libtool.m4"
 
+# gssapi: requires Heimdal
 CYGCONF_ARGS="
 	--disable-backtrace
 	--disable-linux-caps
+	--with-dlz-bdb
 	--with-dlz-filesystem
+	--with-dlz-ldap
+	--with-dlz-postgres
 	--with-docbook-xsl=/usr/share/sgml/docbook/xsl-stylesheets
+	--without-gssapi
 	--with-libtool
 	--with-libxml2=/usr
 	--with-openssl=/usr

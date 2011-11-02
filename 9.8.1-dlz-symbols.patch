@@ -1,0 +1,24 @@
+.libs/dlz_postgres_driver.o: In function `postgres_get_resultset':
+dlz_postgres_driver.c:487: undefined reference to `_sdlzh_build_querystring'
+.libs/dlz_postgres_driver.o: In function `postgres_create':
+dlz_postgres_driver.c:1142: undefined reference to `_sdlzh_build_sqldbinstance'
+.libs/dlz_postgres_driver.o: In function `postgres_destroy':
+dlz_postgres_driver.c:1298: undefined reference to `_sdlzh_destroy_sqldbinstance'
+.libs/dlz_ldap_driver.o: In function `dlz_ldap_destroy':
+dlz_ldap_driver.c:1260: undefined reference to `_sdlzh_destroy_sqldbinstance'
+.libs/dlz_ldap_driver.o: In function `ldap_get_results':
+dlz_ldap_driver.c:689: undefined reference to `_sdlzh_build_querystring'
+.libs/dlz_ldap_driver.o: In function `dlz_ldap_create':
+dlz_ldap_driver.c:1116: undefined reference to `_sdlzh_build_sqldbinstance'
+
+--- origsrc/bind-9.8.1/contrib/dlz/drivers/sdlz_helper.c	2010-05-14 01:29:37.000000000 -0500
++++ src/bind-9.8.1/contrib/dlz/drivers/sdlz_helper.c	2011-11-01 20:01:28.348380500 -0500
+@@ -50,7 +50,7 @@
+  * WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
+-#ifdef DLZ
++#ifdef CONTRIB_DLZ
+ 
+ #include <config.h>
+ 

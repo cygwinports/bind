@@ -1,4 +1,4 @@
 category: Net
-requires: libgcc1 libgssapi3 libidn11 libkrb5_26 libopenssl098 libroken18 libxml2
+requires: libdb4.5 libgcc1 libidn11 libopenldap2_3_0 libopenssl098 libpq5 libxml2
 sdesc: "DNS utilities suite"
 ldesc: "DNS libraries and utilities suite"
