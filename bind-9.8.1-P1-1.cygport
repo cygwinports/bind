@@ -1,10 +1,7 @@
-_pv=${PV/_p/-P}
-
 DESCRIPTION="DNS libraries and utilities suite"
 HOMEPAGE="http://www.isc.org/software/bind/"
-SRC_URI="http://ftp.isc.org/isc/${PN}${PV_MAJ}/${_pv}/${PN}-${_pv}.tar.gz
-         http://ftp.isc.org/isc/${PN}${PV_MAJ}/${_pv}/${PN}-${_pv}.tar.gz.asc"
-SRC_DIR="${PN}-${_pv}"
+SRC_URI="http://ftp.isc.org/isc/${PN}${PV_MAJ}/${PV}/${P}.tar.gz
+         http://ftp.isc.org/isc/${PN}${PV_MAJ}/${PV}/${P}.tar.gz.asc"
 
 PATCH_URI="
 	9.7.1-configure.patch
@@ -22,17 +19,26 @@ PKG_IGNORE=${libbind9_devel_CONTENTS}
 
 DISTCLEANFILES="aclocal.m4 libtool.m4"
 
-# gssapi: requires Heimdal
 CYGCONF_ARGS="
 	--disable-backtrace
 	--disable-linux-caps
 	--with-dlz-bdb
 	--with-dlz-filesystem
 	--with-dlz-ldap
+	--with-dlz-mysql
+	--with-dlz-odbc
 	--with-dlz-postgres
+	--with-dlz-stub
 	--with-docbook-xsl=/usr/share/sgml/docbook/xsl-stylesheets
-	--without-gssapi
+	--with-gssapi=/usr
 	--with-libtool
 	--with-libxml2=/usr
 	--with-openssl=/usr
 "
+DOCS="RELEASE-NOTES-BIND-${PV%-*}.txt"
+
+src_install() {
+	cd ${B}
+	dosbin ${C}/named-config
+	cyginstall
+}
