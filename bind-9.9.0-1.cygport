@@ -6,10 +6,9 @@ SRC_URI="http://ftp.isc.org/isc/${PN}${PV_MAJ}/${PV}/${P}.tar.gz
 PATCH_URI="
 	9.7.1-configure.patch
 	9.7.1-lwconfig-win32.patch
-	9.7.1-no-undefined.patch
+	9.9.0-libtool.patch
 	9.7.2-libidn.patch
 	9.5.0-parallel-build.patch
-	9.8.1-dlz-symbols.patch
 "
 
 PKG_NAMES="bind"
@@ -30,7 +29,7 @@ CYGCONF_ARGS="
 	--with-dlz-postgres
 	--with-dlz-stub
 	--with-docbook-xsl=/usr/share/sgml/docbook/xsl-stylesheets
-	--with-gssapi=/usr
+	--without-gssapi
 	--with-libtool
 	--with-libxml2=/usr
 	--with-openssl=/usr
