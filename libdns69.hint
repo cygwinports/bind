@@ -1,5 +1,5 @@
 category: Net
-requires: libgcc1 libisc62 libopenssl098
+requires: libgcc1 libisc62 libopenssl100
 external-source: bind
 sdesc: "BIND DNS library (runtime)"
 ldesc: "DNS libraries and utilities suite"

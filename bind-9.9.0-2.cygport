@@ -6,10 +6,11 @@ SRC_URI="http://ftp.isc.org/isc/${PN}${PV_MAJ}/${PV}/${P}.tar.gz
 PATCH_URI="
 	9.7.1-configure.patch
 	9.7.1-lwconfig-win32.patch
-	9.9.0-libtool.patch
 	9.7.2-libidn.patch
 	9.5.0-parallel-build.patch
 "
+# Only needed for shared libraries:
+#	9.9.0-libtool.patch
 
 PKG_NAMES="bind"
 bind_CONTENTS='--exclude=isc-config.sh --exclude=man3 etc/ usr/bin/ usr/sbin/ usr/share/'
@@ -21,6 +22,7 @@ DISTCLEANFILES="aclocal.m4 libtool.m4"
 CYGCONF_ARGS="
 	--disable-backtrace
 	--disable-linux-caps
+	--without-dlopen
 	--with-dlz-bdb
 	--with-dlz-filesystem
 	--with-dlz-ldap
