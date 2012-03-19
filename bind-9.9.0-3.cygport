@@ -31,7 +31,7 @@ CYGCONF_ARGS="
 	--with-dlz-postgres
 	--with-dlz-stub
 	--with-docbook-xsl=/usr/share/sgml/docbook/xsl-stylesheets
-	--without-gssapi
+	--with-gssapi
 	--with-libtool
 	--with-libxml2=/usr
 	--with-openssl=/usr
