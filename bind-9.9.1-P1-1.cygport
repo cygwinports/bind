@@ -32,10 +32,10 @@ CYGCONF_ARGS="
 	--with-dlz-stub
 	--with-docbook-xsl=/usr/share/sgml/docbook/xsl-stylesheets
 	--with-gssapi
-	--with-libtool
 	--with-libxml2=/usr
 	--with-openssl=/usr
 "
+LIBS=-liphlpapi
 DOCS="RELEASE-NOTES-BIND-${PV%-*}.txt"
 
 src_install() {
