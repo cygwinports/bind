@@ -1,7 +1,15 @@
-DESCRIPTION="DNS libraries and utilities suite"
+CATEGORY="Net"
+SUMMARY="DNS utilities suite"
+DESCRIPTION="BIND is an implementation of the Domain Name System (DNS)
+protocols. The DNS protocols are part of the core Internet standards.
+They specify the process by which one computer can find another computer
+on the basis of its name. The BIND software distribution contains all of
+the software needed both to ask name service questions and to answer
+such questions."
 HOMEPAGE="http://www.isc.org/software/bind/"
 SRC_URI="http://ftp.isc.org/isc/${PN}${PV_MAJ}/${PV}/${P}.tar.gz
-         http://ftp.isc.org/isc/${PN}${PV_MAJ}/${PV}/${P}.tar.gz.asc"
+         http://ftp.isc.org/isc/${PN}${PV_MAJ}/${PV}/${P}.tar.gz.asc
+         named-config"
 
 PATCH_URI="
 	9.7.1-configure.patch
@@ -40,6 +48,6 @@ DOCS="RELEASE-NOTES-BIND-${PV%-*}.txt"
 
 src_install() {
 	cd ${B}
-	dosbin ${C}/named-config
+	dosbin ${S}/named-config
 	cyginstall
 }

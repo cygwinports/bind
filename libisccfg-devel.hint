@@ -1,5 +1,0 @@
-category: Net
-requires: libisccfg62 libdns-devel libisc-devel
-external-source: bind
-sdesc: "BIND Config File library (development)"
-ldesc: "DNS libraries and utilities suite"

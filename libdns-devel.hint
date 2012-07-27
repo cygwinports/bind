@@ -1,5 +1,0 @@
-category: Net
-requires: libdns69 libisc-devel openssl-devel
-external-source: bind
-sdesc: "BIND DNS library (development)"
-ldesc: "DNS libraries and utilities suite"

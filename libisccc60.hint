@@ -1,5 +1,0 @@
-category: Net
-requires: libisc62
-external-source: bind
-sdesc: "BIND Command Channel library (runtime)"
-ldesc: "DNS libraries and utilities suite"

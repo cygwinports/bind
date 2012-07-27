@@ -1,5 +1,0 @@
-category: Net
-requires: libbind9_60 libdns-devel libisc-devel libisccfg-devel
-external-source: bind
-sdesc: "BIND Bind9 library (development)"
-ldesc: "DNS libraries and utilities suite"

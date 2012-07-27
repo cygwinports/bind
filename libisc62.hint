@@ -1,5 +1,0 @@
-category: Net
-requires: libgcc1 libxml2
-external-source: bind
-sdesc: "BIND ISC library (runtime)"
-ldesc: "DNS libraries and utilities suite"

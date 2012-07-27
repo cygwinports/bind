@@ -1,5 +1,0 @@
-category: Net
-requires:
-external-source: bind
-sdesc: "BIND Lightweight Resolver library (runtime)"
-ldesc: "DNS libraries and utilities suite"

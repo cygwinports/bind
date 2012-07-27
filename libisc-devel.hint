@@ -1,5 +1,0 @@
-category: Net
-requires: libisc62 libxml2-devel
-external-source: bind
-sdesc: "BIND ISC library (development)"
-ldesc: "DNS libraries and utilities suite"

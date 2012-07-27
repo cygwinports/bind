@@ -1,5 +1,0 @@
-category: Net
-requires: libdns69 libisc62
-external-source: bind
-sdesc: "BIND Config File library (runtime)"
-ldesc: "DNS libraries and utilities suite"
