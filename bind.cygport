@@ -1,3 +1,6 @@
+NAME="bind"
+VERSION=9.9.1-P3
+RELEASE=1
 CATEGORY="Net"
 SUMMARY="DNS utilities suite"
 DESCRIPTION="BIND is an implementation of the Domain Name System (DNS)
