@@ -1,5 +1,5 @@
 NAME="bind"
-VERSION=9.9.1-P3
+VERSION=9.9.2
 RELEASE=1
 CATEGORY="Net"
 SUMMARY="DNS utilities suite"
@@ -19,13 +19,15 @@ PATCH_URI="
 	9.7.1-lwconfig-win32.patch
 	9.7.2-libidn.patch
 	9.5.0-parallel-build.patch
+	9.9.2-python-build.patch
 "
 # Only needed for shared libraries:
 #	9.9.0-libtool.patch
 
 PKG_NAMES="bind"
-bind_CONTENTS='--exclude=isc-config.sh --exclude=man3 etc/ usr/bin/ usr/sbin/ usr/share/'
-libbind9_devel_CONTENTS="usr/bin/isc-config.sh usr/include/ usr/lib/ usr/share/man/man3/"
+bind_CONTENTS='--exclude=isc-config.sh* --exclude=man3 etc/ usr/bin/ usr/sbin/ usr/share/'
+libbind9_devel_CONTENTS="usr/bin/isc-config.sh usr/include/ usr/lib/
+                         usr/share/man/man1/isc-config.sh* usr/share/man/man3/"
 PKG_IGNORE=${libbind9_devel_CONTENTS}
 
 DISTCLEANFILES="aclocal.m4 libtool.m4"
