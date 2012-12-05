@@ -1,8 +1,8 @@
 NAME="bind"
-VERSION=9.9.2
+VERSION=9.9.2-P1
 RELEASE=1
 CATEGORY="Net"
-SUMMARY="DNS utilities suite"
+SUMMARY="DNS server and utilities suite"
 DESCRIPTION="BIND is an implementation of the Domain Name System (DNS)
 protocols. The DNS protocols are part of the core Internet standards.
 They specify the process by which one computer can find another computer
@@ -24,8 +24,13 @@ PATCH_URI="
 # Only needed for shared libraries:
 #	9.9.0-libtool.patch
 
-PKG_NAMES="bind"
-bind_CONTENTS='--exclude=isc-config.sh* --exclude=man3 etc/ usr/bin/ usr/sbin/ usr/share/'
+PKG_NAMES="bind bind-utils"
+bind_SUMMARY="DNS server"
+bind_REQUIRES="bind-utils"
+bind_CONTENTS="etc/ usr/sbin/ usr/share/man/man1/arpaname* usr/share/man/man[58]/"
+bind_utils_CONTENTS="DNS utilities"
+bind_utils_CONTENTS="--exclude=arpaname* --exclude=isc-config.sh*
+                     usr/bin/ usr/share/doc/ usr/share/man/man1/"
 libbind9_devel_CONTENTS="usr/bin/isc-config.sh usr/include/ usr/lib/
                          usr/share/man/man1/isc-config.sh* usr/share/man/man3/"
 PKG_IGNORE=${libbind9_devel_CONTENTS}
@@ -36,12 +41,12 @@ CYGCONF_ARGS="
 	--disable-backtrace
 	--disable-linux-caps
 	--without-dlopen
-	--with-dlz-bdb
+	--with-dlz-bdb=/usr
 	--with-dlz-filesystem
-	--with-dlz-ldap
-	--with-dlz-mysql
-	--with-dlz-odbc
-	--with-dlz-postgres
+	--with-dlz-ldap=/usr
+	--with-dlz-mysql=/usr
+	--with-dlz-odbc=/usr
+	--with-dlz-postgres=/usr
 	--with-dlz-stub
 	--with-docbook-xsl=/usr/share/sgml/docbook/xsl-stylesheets
 	--with-gssapi
