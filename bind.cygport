@@ -1,6 +1,6 @@
 NAME="bind"
-VERSION=9.9.2-P1
-RELEASE=2
+VERSION=9.9.3-P1
+RELEASE=1
 CATEGORY="Net"
 SUMMARY="DNS server and utilities suite"
 DESCRIPTION="BIND is an implementation of the Domain Name System (DNS)
@@ -10,8 +10,8 @@ on the basis of its name. The BIND software distribution contains all of
 the software needed both to ask name service questions and to answer
 such questions."
 HOMEPAGE="http://www.isc.org/software/bind/"
-SRC_URI="http://ftp.isc.org/isc/${PN}${PV_MAJ}/${PV}/${P}.tar.gz
-         http://ftp.isc.org/isc/${PN}${PV_MAJ}/${PV}/${P}.tar.gz.asc
+SRC_URI="http://ftp.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.gz
+         http://ftp.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.gz.asc
          named-config"
 
 PATCH_URI="
@@ -19,7 +19,7 @@ PATCH_URI="
 	9.7.1-lwconfig-win32.patch
 	9.7.2-libidn.patch
 	9.5.0-parallel-build.patch
-	9.9.2-python-build.patch
+	9.9.3-python-install.patch
 "
 # Only needed for shared libraries:
 #	9.9.0-libtool.patch
@@ -35,7 +35,7 @@ libbind9_devel_CONTENTS="usr/bin/isc-config.sh usr/include/ usr/lib/
                          usr/share/man/man1/isc-config.sh* usr/share/man/man3/"
 PKG_IGNORE=${libbind9_devel_CONTENTS}
 
-DISTCLEANFILES="aclocal.m4 libtool.m4"
+DISTCLEANFILES="aclocal.m4"
 
 CYGCONF_ARGS="
 	--disable-backtrace
@@ -46,13 +46,15 @@ CYGCONF_ARGS="
 	--with-dlz-ldap=/usr
 	--with-dlz-mysql=/usr
 	--with-dlz-odbc=/usr
-	--with-dlz-postgres=/usr
+	${NOTRIGHTNOW+--with-dlz-postgres=/usr}
 	--with-dlz-stub
 	--with-docbook-xsl=/usr/share/sgml/docbook/xsl-stylesheets
 	--with-gssapi
 	--with-libxml2=/usr
 	--with-openssl=/usr
 "
+# see config.h.win32
+CPPFLAGS+=" -DFD_SETSIZE=16384"
 LIBS=-liphlpapi
 DOCS="RELEASE-NOTES-BIND-${PV%-*}.txt"
 
