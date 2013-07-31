@@ -1,5 +1,5 @@
 NAME="bind"
-VERSION=9.9.3-P1
+VERSION=9.9.3-P2
 RELEASE=1
 CATEGORY="Net"
 SUMMARY="DNS server and utilities suite"
@@ -46,7 +46,7 @@ CYGCONF_ARGS="
 	--with-dlz-ldap=/usr
 	--with-dlz-mysql=/usr
 	--with-dlz-odbc=/usr
-	${NOTRIGHTNOW+--with-dlz-postgres=/usr}
+	${ARCH_i686+--with-dlz-postgres=/usr}
 	--with-dlz-stub
 	--with-docbook-xsl=/usr/share/sgml/docbook/xsl-stylesheets
 	--with-gssapi
