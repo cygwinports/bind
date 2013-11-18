@@ -1,5 +1,5 @@
 NAME="bind"
-VERSION=9.9.3-P2
+VERSION=9.9.4-P1
 RELEASE=1
 CATEGORY="Net"
 SUMMARY="DNS server and utilities suite"
