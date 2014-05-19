@@ -1,6 +1,6 @@
 NAME="bind"
 VERSION=9.9.5
-RELEASE=1
+RELEASE=2
 CATEGORY="Net"
 SUMMARY="DNS server and utilities suite"
 DESCRIPTION="BIND is an implementation of the Domain Name System (DNS)
@@ -29,9 +29,9 @@ bind_SUMMARY="DNS server"
 bind_REQUIRES="bind-utils"
 bind_CONTENTS="etc/ usr/sbin/ usr/share/man/man1/arpaname* usr/share/man/man[58]/"
 bind_utils_CONTENTS="DNS utilities"
-bind_utils_CONTENTS="--exclude=arpaname* --exclude=isc-config.sh*
+bind_utils_CONTENTS="--exclude=arpaname* --exclude=isc-config.sh* --exclude=bind9-config
                      usr/bin/ usr/share/doc/ usr/share/man/man1/"
-libbind9_devel_CONTENTS="usr/bin/isc-config.sh usr/include/ usr/lib/
+libbind9_devel_CONTENTS="usr/bin/bind9-config usr/bin/isc-config.sh usr/include/ usr/lib/
                          usr/share/man/man1/isc-config.sh* usr/share/man/man3/"
 PKG_IGNORE=${libbind9_devel_CONTENTS}
 
