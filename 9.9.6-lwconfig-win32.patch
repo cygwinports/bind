@@ -25,37 +25,11 @@
  #undef lwres_conf_parse
  
 +#ifdef __CYGWIN__
++#define if_nametoindex W32API_if_nametoindex
 +#include <windows.h>
-+#include <iptypes.h>
-+#else
- #include <iphlpapi.h>
 +#endif
+ #include <iphlpapi.h>
++#undef W32API_if_nametoindex
  
  #define TCPIP_SUBKEY	\
  	"SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters"
-@@ -95,6 +100,10 @@ lwres_conf_parse(lwres_context_t *ctx, c
- 	ULONG    BufLen = sizeof(FIXED_INFO);
- 	DWORD    dwRetVal;
- 	IP_ADDR_STRING *pIPAddr;
-+#ifdef __CYGWIN__
-+	static HMODULE hIphlpapi = NULL;
-+	static DWORD (WINAPI *GetNetworkParams)(PFIXED_INFO, PULONG) = NULL;
-+#endif
- 
- 	REQUIRE(ctx != NULL);
- 	confdata = &ctx->confdata;
-@@ -109,6 +118,14 @@ lwres_conf_parse(lwres_context_t *ctx, c
- 	/*
- 	 * We didn't get any nameservers so we need to do this ourselves
- 	 */
-+#ifdef __CYGWIN__
-+	if (!GetNetworkParams) {
-+		hIphlpapi = LoadLibraryEx ("iphlpapi.dll", NULL,
-+					   LOAD_LIBRARY_SEARCH_SYSTEM32);
-+		GetNetworkParams = (typeof (GetNetworkParams)) GetProcAddress (hIphlpapi, "GetNetworkParams");
-+		if (!GetNetworkParams) return (LWRES_R_FAILURE);
-+	}
-+#endif
- 	FixedInfo = (FIXED_INFO *) GlobalAlloc(GPTR, BufLen);
- 	dwRetVal = GetNetworkParams(FixedInfo, &BufLen);
- 	if (dwRetVal == ERROR_BUFFER_OVERFLOW) {

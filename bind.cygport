@@ -1,6 +1,6 @@
 NAME="bind"
 VERSION=9.9.6
-RELEASE=1
+RELEASE=2
 CATEGORY="Net"
 SUMMARY="DNS server and utilities suite"
 DESCRIPTION="BIND is an implementation of the Domain Name System (DNS)
@@ -38,28 +38,44 @@ PKG_IGNORE=${libbind9_devel_CONTENTS}
 
 DISTCLEANFILES="aclocal.m4"
 
-CYGCONF_ARGS="
-	--disable-backtrace
-	--disable-linux-caps
-	--without-dlopen
-	--with-dlz-bdb=/usr
-	--with-dlz-filesystem
-	--with-dlz-ldap=/usr
-	--with-dlz-mysql=/usr
-	--with-dlz-odbc=/usr
-	--with-dlz-postgres=/usr
-	--with-dlz-stub
-	--with-docbook-xsl=/usr/share/sgml/docbook/xsl-stylesheets
-	--with-gssapi
-	--with-libxml2=/usr
-	--with-openssl=/usr
-"
-# see config.h.win32
-CPPFLAGS+=" -DFD_SETSIZE=16384"
-DOCS="RELEASE-NOTES-BIND-${VERSION%-*}.txt"
+src_compile() {
+	cd ${S}
+	cygautoreconf
+
+	cd ${B}
+
+	# we want GetNetworkParams but not if_nametoindex
+	cat > iphlpapi.def <<_EOF
+LIBRARY "IPHLPAPI.DLL"
+EXPORTS
+GetNetworkParams${ARCH_i686+@8}
+_EOF
+	${DLLTOOL} -k -d iphlpapi.def -l libiphlpapi.a
+	LIBS+=" -Wl,${B}/libiphlpapi.a"
+
+	# see config.h.win32
+	CPPFLAGS+=" -DFD_SETSIZE=16384"
+
+	cygconf \
+		--disable-backtrace --disable-linux-caps --without-dlopen \
+		--with-dlz-bdb=/usr \
+		--with-dlz-filesystem \
+		--with-dlz-ldap=/usr \
+		--with-dlz-mysql=/usr \
+		--with-dlz-odbc=/usr \
+		--with-dlz-postgres=/usr \
+		--with-dlz-stub \
+		--with-docbook-xsl=/usr/share/sgml/docbook/xsl-stylesheets \
+		--with-gssapi \
+		--with-libxml2=/usr \
+		--with-openssl=/usr
+
+	cygmake
+}
 
 src_install() {
 	cd ${B}
 	dosbin ${S}/named-config
 	cyginstall
+	dodoc ${S}/RELEASE-NOTES-BIND-${VERSION%-*}.txt
 }
