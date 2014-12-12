@@ -1,5 +1,5 @@
 NAME="bind"
-VERSION=9.9.6
+VERSION=9.9.6-P1
 RELEASE=2
 CATEGORY="Net"
 SUMMARY="DNS server and utilities suite"
@@ -20,6 +20,7 @@ PATCH_URI="
 	9.9.6-lwconfig-win32.patch
 	9.5.0-parallel-build.patch
 	9.9.3-python-install.patch
+	9.9.6-cygwin-threads.patch
 "
 # Only needed for shared libraries:
 #	9.9.0-libtool.patch
@@ -51,12 +52,15 @@ EXPORTS
 GetNetworkParams${ARCH_i686+@8}
 _EOF
 	${DLLTOOL} -k -d iphlpapi.def -l libiphlpapi.a
-	LIBS+=" -Wl,${B}/libiphlpapi.a"
+	LIBS+=" -lcatgets -Wl,${B}/libiphlpapi.a"
 
 	# see config.h.win32
 	CPPFLAGS+=" -DFD_SETSIZE=16384"
 
 	cygconf \
+		--enable-threads --enable-ipv6 \
+		--enable-filter-aaaa --enable-rrl --enable-fixed-rrset \
+		--disable-openssl-version-check \
 		--disable-backtrace --disable-linux-caps --without-dlopen \
 		--with-dlz-bdb=/usr \
 		--with-dlz-filesystem \
@@ -66,7 +70,7 @@ _EOF
 		--with-dlz-postgres=/usr \
 		--with-dlz-stub \
 		--with-docbook-xsl=/usr/share/sgml/docbook/xsl-stylesheets \
-		--with-gssapi \
+		--with-gssapi --disable-isc-spnego \
 		--with-libxml2=/usr \
 		--with-openssl=/usr
 
