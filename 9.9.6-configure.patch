@@ -9,15 +9,6 @@
  AC_SUBST(LN)
  
  case "$AR" in
-@@ -2869,7 +2869,7 @@ esac
- case $ac_cv_have_if_nametoindex in
- yes)
- 	ISC_PLATFORM_HAVEIFNAMETOINDEX="#define ISC_PLATFORM_HAVEIFNAMETOINDEX 1"
--	AC_DEFINE(HAVE_IF_NAMETOINDEX, 1)
-+	AC_DEFINE(HAVE_IF_NAMETOINDEX, 1, [Define if if_nametoindex is available])
- 	;;
- *)
- 	ISC_PLATFORM_HAVEIFNAMETOINDEX="#undef ISC_PLATFORM_HAVEIFNAMETOINDEX"
 @@ -3294,7 +3294,7 @@ NOM_PATH_FILE(XSLT_DOCBOOK_MAKETOC_XHTML
  # No idea where this lives except on FreeBSD.
  #
