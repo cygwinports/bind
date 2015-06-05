@@ -1,5 +1,5 @@
 NAME="bind"
-VERSION=9.9.7
+VERSION=9.10.2
 RELEASE=1
 CATEGORY="Net"
 SUMMARY="DNS server and utilities suite"
@@ -15,7 +15,7 @@ SRC_URI="http://ftp.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.gz
          named-config"
 
 PATCH_URI="
-	http://pkgs.fedoraproject.org/cgit/bind.git/plain/bind-99-libidn.patch?h=f21
+	http://pkgs.fedoraproject.org/cgit/bind.git/plain/bind-99-libidn.patch
 	9.9.6-configure.patch
 	9.9.6-lwconfig-win32.patch
 	9.5.0-parallel-build.patch
@@ -70,6 +70,7 @@ _EOF
 		--with-dlz-postgres=/usr \
 		--with-dlz-stub \
 		--with-docbook-xsl=/usr/share/sgml/docbook/xsl-stylesheets \
+		--with-geiop \
 		--with-gssapi --disable-isc-spnego \
 		--with-libxml2=/usr \
 		--with-openssl=/usr
