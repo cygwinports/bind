@@ -1,6 +1,6 @@
 NAME="bind"
-VERSION=9.10.2
-RELEASE=4.P4
+VERSION=9.10.3
+RELEASE=1
 CATEGORY="Net"
 SUMMARY="DNS server and utilities suite"
 DESCRIPTION="BIND is an implementation of the Domain Name System (DNS)
@@ -10,8 +10,8 @@ on the basis of its name. The BIND software distribution contains all of
 the software needed both to ask name service questions and to answer
 such questions."
 HOMEPAGE="http://www.isc.org/software/bind/"
-#tar_v=${VERSION}
-tar_v="${VERSION}-${RELEASE##*\.}"
+tar_v=${VERSION}
+#tar_v="${VERSION}-${RELEASE##*\.}"
 SRC_URI="http://ftp.isc.org/isc/bind9/${tar_v}/bind-${tar_v}.tar.gz
          http://ftp.isc.org/isc/bind9/${tar_v}/bind-${tar_v}.tar.gz.asc
          named-config"
