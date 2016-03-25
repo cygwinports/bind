@@ -1,6 +1,6 @@
 NAME="bind"
 VERSION=9.10.3
-RELEASE=2.P3
+RELEASE=3.P4
 CATEGORY="Net"
 SUMMARY="DNS server and utilities suite"
 DESCRIPTION="BIND is an implementation of the Domain Name System (DNS)
@@ -24,6 +24,7 @@ PATCH_URI="
 	9.5.0-parallel-build.patch
 	9.9.3-python-install.patch
 	9.9.6-cygwin-threads.patch
+	9.10.3-cygwin-ftm.patch
 "
 # Only needed for shared libraries:
 #	9.9.0-libtool.patch
