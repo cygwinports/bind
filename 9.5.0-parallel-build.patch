@@ -10,6 +10,6 @@ Fedora patch: bind-9.5-parallel-build.patch
 -.NOTPARALLEL:
 -.NO_PARALLEL:
 -
- @BIND9_VERSION@
+ VERSION=@BIND9_VERSION@
+ @BIND9_MAJOR@
  
- @LIBDNS_API@
