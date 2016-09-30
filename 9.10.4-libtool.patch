@@ -1,0 +1,109 @@
+--- origsrc/bind-9.10.4-P3/lib/bind9/Makefile.in	2016-09-13 20:23:44.000000000 -0500
++++ src/bind-9.10.4-P3/lib/bind9/Makefile.in	2016-09-27 13:07:14.083131800 -0500
+@@ -69,6 +69,7 @@ libbind9.la: ${OBJS} ${ISCCFGDEPLIBS} ${
+ 	${LIBTOOL_MODE_LINK} \
+ 		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o libbind9.la -rpath ${libdir} \
+ 		-version-info ${LIBINTERFACE}:${LIBREVISION}:${LIBAGE} \
++		-no-undefined \
+ 		${OBJS} ${DNSLIBS} ${ISCCFGLIBS} ${ISCLIBS} @DNS_CRYPTO_LIBS@ \
+ 		${LIBS}
+ 
+--- origsrc/bind-9.10.4-P3/lib/dns/Makefile.in	2016-09-27 12:58:58.278335400 -0500
++++ src/bind-9.10.4-P3/lib/dns/Makefile.in	2016-09-27 13:07:19.297425200 -0500
+@@ -142,6 +142,7 @@ libdns.la: ${OBJS}
+ 	${LIBTOOL_MODE_LINK} \
+ 		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o libdns.la -rpath ${libdir} \
+ 		-version-info ${LIBINTERFACE}:${LIBREVISION}:${LIBAGE} \
++		-no-undefined \
+ 		${OBJS} ${ISCLIBS} @DNS_CRYPTO_LIBS@ ${LIBS}
+ 
+ timestamp: libdns.@A@
+--- origsrc/bind-9.10.4-P3/lib/irs/Makefile.in	2016-09-13 20:23:44.000000000 -0500
++++ src/bind-9.10.4-P3/lib/irs/Makefile.in	2016-09-27 13:32:25.621431400 -0500
+@@ -42,6 +42,14 @@ SRCS =		context.c \
+ 		gai_strerror.c getaddrinfo.c getnameinfo.c \
+ 		resconf.c
+ 
++ISCLIBS =	../../lib/isc/libisc.@A@
++ISCCFGLIBS =    ../../lib/isccfg/libisccfg.@A@
++DNSLIBS =    ../../lib/dns/libdns.@A@
++
++ISCDEPLIBS =	../../lib/isc/libisc.@A@
++ISCCFGDEPLIBS =	../../lib/isccfg/libisccfg.@A@
++DNSDEPLIBS =    ../../lib/dns/libdns.@A@
++
+ LIBS =		@LIBS@
+ 
+ SUBDIRS =	include
+@@ -61,11 +69,12 @@ libirs.@SA@: ${OBJS} version.@O@
+ 	${AR} ${ARFLAGS} $@ ${OBJS} version.@O@
+ 	${RANLIB} $@
+ 
+-libirs.la: ${OBJS} version.@O@
++libirs.la: ${OBJS} version.@O@ $(ISCDEPLIBS) $(ISCCFGLIBS) $(DNSDEPLIBS)
+ 	${LIBTOOL_MODE_LINK} \
+ 		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o libirs.la -rpath ${libdir} \
+ 		-version-info ${LIBINTERFACE}:${LIBREVISION}:${LIBAGE} \
+-		${OBJS} version.@O@ ${LIBS}
++		-no-undefined \
++		${OBJS} version.@O@ $(DNSLIBS) $(ISCCFGLIBS) $(ISCLIBS) ${LIBS}
+ 
+ timestamp: libirs.@A@
+ 	touch timestamp
+--- origsrc/bind-9.10.4-P3/lib/isc/Makefile.in	2016-09-13 20:23:44.000000000 -0500
++++ src/bind-9.10.4-P3/lib/isc/Makefile.in	2016-09-27 13:19:34.311759500 -0500
+@@ -121,12 +121,14 @@ libisc.la: ${OBJS} ${SYMTBLOBJS}
+ 	${LIBTOOL_MODE_LINK} \
+ 		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o libisc.la -rpath ${libdir} \
+ 		-version-info ${LIBINTERFACE}:${LIBREVISION}:${LIBAGE} \
++		-no-undefined \
+ 		${OBJS} ${SYMTBLOBJS} ${LIBS}
+ 
+ libisc-nosymtbl.la: ${OBJS}
+ 	${LIBTOOL_MODE_LINK} \
+ 		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o libisc-nosymtbl.la -rpath ${libdir} \
+ 		-version-info ${LIBINTERFACE}:${LIBREVISION}:${LIBAGE} \
++		-no-undefined -static \
+ 		${OBJS} ${LIBS}
+ 
+ timestamp: libisc.@A@ libisc-nosymtbl.@A@
+--- origsrc/bind-9.10.4-P3/lib/isccc/Makefile.in	2016-09-13 20:23:44.000000000 -0500
++++ src/bind-9.10.4-P3/lib/isccc/Makefile.in	2016-09-27 13:07:30.594793600 -0500
+@@ -71,6 +71,7 @@ libisccc.la: ${OBJS}
+ 	${LIBTOOL_MODE_LINK} \
+ 		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o libisccc.la -rpath ${libdir} \
+ 		-version-info ${LIBINTERFACE}:${LIBREVISION}:${LIBAGE} \
++		-no-undefined \
+ 		${OBJS} ${ISCLIBS} ${LIBS}
+ 
+ timestamp: libisccc.@A@
+--- origsrc/bind-9.10.4-P3/lib/isccfg/Makefile.in	2016-09-13 20:23:44.000000000 -0500
++++ src/bind-9.10.4-P3/lib/isccfg/Makefile.in	2016-09-27 13:07:34.500581800 -0500
+@@ -70,6 +70,7 @@ libisccfg.la: ${OBJS}
+ 	 ${LIBTOOL_MODE_LINK} \
+ 		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o libisccfg.la -rpath ${libdir} \
+ 		-version-info ${LIBINTERFACE}:${LIBREVISION}:${LIBAGE} \
++		-no-undefined \
+ 		${OBJS} ${DNSLIBS} ${ISCCCLIBS} ${ISCLIBS} @DNS_CRYPTO_LIBS@ \
+ 		${LIBS}
+ 
+--- origsrc/bind-9.10.4-P3/lib/lwres/Makefile.in	2016-09-13 20:23:44.000000000 -0500
++++ src/bind-9.10.4-P3/lib/lwres/Makefile.in	2016-09-27 13:07:38.421288900 -0500
+@@ -69,6 +69,7 @@ liblwres.la: ${OBJS} version.@O@
+ 	${LIBTOOL_MODE_LINK} \
+ 		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o liblwres.la -rpath ${libdir} \
+ 		-version-info ${LIBINTERFACE}:${LIBREVISION}:${LIBAGE} \
++		-no-undefined \
+ 		${OBJS} version.@O@ ${LIBS}
+ 
+ timestamp: liblwres.@A@
+--- origsrc/bind-9.10.4-P3/lib/tests/Makefile.in	2016-09-13 20:23:44.000000000 -0500
++++ src/bind-9.10.4-P3/lib/tests/Makefile.in	2016-09-27 13:34:06.243113400 -0500
+@@ -47,6 +47,7 @@ libt_api.@SA@: ${OBJS}
+ libt_api.la: ${OBJS}
+ 	${LIBTOOL_MODE_LINK} \
+ 		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o libt_api.la -rpath ${libdir} \
++		-no-undefined -static \
+ 		${OBJS} ${ISCLIBS} ${LIBS} @LIBTOOL_ALLOW_UNDEFINED@ @LIBTOOL_IN_MAIN@
+ 
+ timestamp: libt_api.@A@

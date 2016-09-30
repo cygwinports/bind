@@ -1,6 +1,6 @@
 NAME="bind"
 VERSION=9.10.4
-RELEASE=2.P2
+RELEASE=3.P3
 CATEGORY="Net"
 SUMMARY="DNS server and utilities suite"
 DESCRIPTION="BIND is an implementation of the Domain Name System (DNS)
@@ -16,7 +16,6 @@ SRC_URI="http://ftp.isc.org/isc/bind9/${tar_v}/bind-${tar_v}.tar.gz
          http://ftp.isc.org/isc/bind9/${tar_v}/bind-${tar_v}.tar.gz.asc
          named-config"
 SRC_DIR="bind-${tar_v}"
-
 PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/bind.git/plain/bind-99-libidn.patch
 	9.9.6-configure.patch
@@ -25,22 +24,74 @@ PATCH_URI="
 	9.9.3-python-install.patch
 	9.9.6-cygwin-threads.patch
 	9.10.3-cygwin-ftm.patch
+	9.10.4-libtool.patch
 "
-# Only needed for shared libraries:
-#	9.9.0-libtool.patch
 
-PKG_NAMES="bind bind-utils"
+PKG_NAMES="bind bind-utils bind-doc
+	   libbind9_140 libdns165 libirs141 libisc160 libisccc140
+	   libisccfg140 liblwres141 libbind9-devel"
 bind_SUMMARY="DNS server"
 bind_REQUIRES="bind-utils"
-bind_CONTENTS="etc/ usr/sbin/ usr/share/man/man1/arpaname* usr/share/man/man[58]/"
+bind_CONTENTS="
+	etc/
+	usr/sbin/*
+	usr/share/man/man1/arpaname*
+	usr/share/man/man[58]/
+"
 bind_utils_CONTENTS="DNS utilities"
-bind_utils_CONTENTS="--exclude=arpaname* --exclude=isc-config.sh* --exclude=bind9-config*
-                     usr/bin/ usr/share/doc/ usr/share/man/man1/"
-libbind9_devel_CONTENTS="usr/bin/bind9-config usr/bin/isc-config.sh usr/include/ usr/lib/
-                         usr/share/man/man1/bind9-config* usr/share/man/man1/isc-config.sh*
-                         usr/share/man/man3/"
-PKG_IGNORE=${libbind9_devel_CONTENTS}
+bind_utils_CONTENTS="
+	--exclude=arpaname*
+	--exclude=isc-config.sh*
+	--exclude=bind9-config*
+	--exclude=arm
+	usr/bin/*.exe
+	usr/share/doc/
+	usr/share/man/man1/
+"
+bind_doc_CATEGORY="Doc"
+bind_doc_SUMMARY="BIND Administrator Reference Manual"
+bind_doc_CONTENTS="usr/share/doc/bind/arm/"
+libbind9_140_CATEGORY="Libs"
+libbind9_140_SUMMARY="BIND library"
+libbind9_140_CONTENTS="usr/bin/cygbind9-140.dll"
+libdns165_CATEGORY="Libs"
+libdns165_SUMMARY="BIND DNS library"
+libdns165_CONTENTS="usr/bin/cygdns-165.dll"
+libirs141_CATEGORY="Libs"
+libirs141_SUMMARY="BIND resolv.conf parser library"
+libirs141_CONTENTS="usr/bin/cygirs-141.dll"
+libisc160_CATEGORY="Libs"
+libisc160_SUMMARY="BIND ISC core library"
+libisc160_CONTENTS="usr/bin/cygisc-160.dll"
+libisccc140_CATEGORY="Libs"
+libisccc140_SUMMARY="BIND Control Channel library"
+libisccc140_CONTENTS="usr/bin/cygisccc-140.dll"
+libisccfg140_CATEGORY="Libs"
+libisccfg140_SUMMARY="BIND named.conf parser library"
+libisccfg140_CONTENTS="usr/bin/cygisccfg-140.dll"
+liblwres141_CATEGORY="Libs"
+liblwres141_SUMMARY="BIND Lightweight Resolver library"
+liblwres141_CONTENTS="usr/bin/cyglwres-141.dll"
+libbind9_devel_CATEGORY="Libs"
+libbind9_devel_REQUIRES="libcatgets-devel libGeoIP-devel libjson-c-devel libkrb5-devel libxml2-devel openssl-devel"
+libbind9_devel_SUMMARY="BIND libraries (development)"
+libbind9_devel_CONTENTS="
+	usr/bin/bind9-config
+	usr/bin/isc-config.sh
+	usr/include/bind9/
+	usr/include/dns/
+	usr/include/dst/
+	usr/include/irs/
+	usr/include/isc*/
+	usr/include/lwres/
+	usr/lib/lib*.dll.a
+	usr/share/man/man1/bind9-config*
+	usr/share/man/man1/isc-config.sh*
+	usr/share/man/man3/
+"
+PKG_IGNORE="usr/include/pk*11/"
 
+DIFF_EXCLUDES="*.1 *.html *.pdf"
 DISTCLEANFILES="aclocal.m4"
 
 src_compile() {
@@ -63,7 +114,9 @@ _EOF
 
 	cygconf \
 		--enable-threads --enable-ipv6 \
-		--enable-filter-aaaa --enable-rrl --enable-fixed-rrset \
+		--enable-filter-aaaa --enable-fixed-rrset \
+		--enable-full-report \
+		--enable-openssl-hash \
 		--disable-openssl-version-check \
 		--disable-backtrace --disable-linux-caps --without-dlopen \
 		--with-dlz-bdb=/usr \
@@ -74,17 +127,26 @@ _EOF
 		--with-dlz-postgres=/usr \
 		--with-dlz-stub \
 		--with-docbook-xsl=/usr/share/sgml/docbook/xsl-stylesheets \
-		--with-geiop \
+		--with-geoip \
 		--with-gssapi --disable-isc-spnego \
+		--with-libtool \
 		--with-libxml2=/usr \
 		--with-openssl=/usr
 
 	cygmake
+
+#	lndirs
+#	cygmake -j1 doc
 }
 
 src_install() {
 	cd ${B}
 	dosbin ${S}/named-config
 	cyginstall
+
+	sed -i -e "s|-Wl,${B}[^ ]*||" ${D}/usr/bin/isc-config.sh
+
 	dodoc ${S}/RELEASE-NOTES-BIND-${VERSION%-*}.txt
+	docinto arm
+	dodoc ${S}/doc/arm/[^i]*.{html,pdf}
 }
