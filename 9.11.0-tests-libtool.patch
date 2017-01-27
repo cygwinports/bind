@@ -1,0 +1,13 @@
+dyndb/driver tries to build an .so module directly
+
+--- origsrc/bind-9.11.0-P2/bin/tests/system/Makefile.in	2016-12-11 16:05:44.000000000 -0600
++++ src/bind-9.11.0-P2/bin/tests/system/Makefile.in	2017-01-27 03:32:41.185160000 -0600
+@@ -10,7 +10,7 @@ top_srcdir =	@top_srcdir@
+ 
+ @BIND9_MAKE_INCLUDES@
+ 
+-SUBDIRS =	builtin dlzexternal dyndb filter-aaaa geoip lwresd pipelined \
++SUBDIRS =	builtin dlzexternal filter-aaaa geoip lwresd pipelined \
+ 		resolver rndc rpz rsabigexponent statistics tkey tsiggss
+ TARGETS =
+ 

@@ -1,6 +1,8 @@
+inherit python
+
 NAME="bind"
-VERSION=9.10.4
-RELEASE=5.P5
+VERSION=9.11.0
+RELEASE=1.P2
 CATEGORY="Net"
 SUMMARY="DNS server and utilities suite"
 DESCRIPTION="BIND is an implementation of the Domain Name System (DNS)
@@ -21,19 +23,20 @@ PATCH_URI="
 	9.9.6-configure.patch
 	9.9.6-lwconfig-win32.patch
 	9.5.0-parallel-build.patch
-	9.9.3-python-install.patch
 	9.9.6-cygwin-threads.patch
 	9.10.3-cygwin-ftm.patch
 	9.10.4-libtool.patch
+	9.11.0-tests-libtool.patch
 "
 
 PKG_NAMES="bind bind-utils bind-doc
-	   libbind9_140 libdns165 libirs141 libisc160 libisccc140
-	   libisccfg140 liblwres141 libbind9-devel"
+	   libbind9_160 libdns166 libirs160 libisc160 libisccc160
+	   libisccfg160 liblwres160 libbind9-devel python-isc"
 bind_SUMMARY="DNS server"
 bind_REQUIRES="bind-utils"
 bind_CONTENTS="
 	etc/
+	usr/bin/arpaname.exe
 	usr/sbin/*
 	usr/share/man/man1/arpaname*
 	usr/share/man/man[58]/
@@ -51,27 +54,27 @@ bind_utils_CONTENTS="
 bind_doc_CATEGORY="Doc"
 bind_doc_SUMMARY="BIND Administrator Reference Manual"
 bind_doc_CONTENTS="usr/share/doc/bind/arm/"
-libbind9_140_CATEGORY="Libs"
-libbind9_140_SUMMARY="BIND library"
-libbind9_140_CONTENTS="usr/bin/cygbind9-140.dll"
-libdns165_CATEGORY="Libs"
-libdns165_SUMMARY="BIND DNS library"
-libdns165_CONTENTS="usr/bin/cygdns-165.dll"
-libirs141_CATEGORY="Libs"
-libirs141_SUMMARY="BIND resolv.conf parser library"
-libirs141_CONTENTS="usr/bin/cygirs-141.dll"
+libbind9_160_CATEGORY="Libs"
+libbind9_160_SUMMARY="BIND library"
+libbind9_160_CONTENTS="usr/bin/cygbind9-160.dll"
+libdns166_CATEGORY="Libs"
+libdns166_SUMMARY="BIND DNS library"
+libdns166_CONTENTS="usr/bin/cygdns-166.dll"
+libirs160_CATEGORY="Libs"
+libirs160_SUMMARY="BIND resolv.conf parser library"
+libirs160_CONTENTS="usr/bin/cygirs-160.dll"
 libisc160_CATEGORY="Libs"
 libisc160_SUMMARY="BIND ISC core library"
 libisc160_CONTENTS="usr/bin/cygisc-160.dll"
-libisccc140_CATEGORY="Libs"
-libisccc140_SUMMARY="BIND Control Channel library"
-libisccc140_CONTENTS="usr/bin/cygisccc-140.dll"
-libisccfg140_CATEGORY="Libs"
-libisccfg140_SUMMARY="BIND named.conf parser library"
-libisccfg140_CONTENTS="usr/bin/cygisccfg-140.dll"
-liblwres141_CATEGORY="Libs"
-liblwres141_SUMMARY="BIND Lightweight Resolver library"
-liblwres141_CONTENTS="usr/bin/cyglwres-141.dll"
+libisccc160_CATEGORY="Libs"
+libisccc160_SUMMARY="BIND Control Channel library"
+libisccc160_CONTENTS="usr/bin/cygisccc-160.dll"
+libisccfg160_CATEGORY="Libs"
+libisccfg160_SUMMARY="BIND named.conf parser library"
+libisccfg160_CONTENTS="usr/bin/cygisccfg-160.dll"
+liblwres160_CATEGORY="Libs"
+liblwres160_SUMMARY="BIND Lightweight Resolver library"
+liblwres160_CONTENTS="usr/bin/cyglwres-160.dll"
 libbind9_devel_CATEGORY="Libs"
 libbind9_devel_REQUIRES="libcatgets-devel libGeoIP-devel libjson-c-devel libkrb5-devel libxml2-devel openssl-devel"
 libbind9_devel_SUMMARY="BIND libraries (development)"
@@ -84,12 +87,15 @@ libbind9_devel_CONTENTS="
 	usr/include/irs/
 	usr/include/isc*/
 	usr/include/lwres/
+	usr/include/pk*11/
 	usr/lib/lib*.dll.a
 	usr/share/man/man1/bind9-config*
 	usr/share/man/man1/isc-config.sh*
 	usr/share/man/man3/
 "
-PKG_IGNORE="usr/include/pk*11/"
+python_isc_CATEGORY="Python"
+python_isc_SUMMARY="Python module for sending commands to rndc"
+python_isc_CONTENTS="${PYTHON_SITELIB#/}/isc*"
 
 DIFF_EXCLUDES="*.1 *.html *.pdf"
 DISTCLEANFILES="aclocal.m4"
