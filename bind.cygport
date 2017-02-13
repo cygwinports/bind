@@ -2,7 +2,7 @@ inherit python
 
 NAME="bind"
 VERSION=9.11.0
-RELEASE=1.P2
+RELEASE=2.P3
 CATEGORY="Net"
 SUMMARY="DNS server and utilities suite"
 DESCRIPTION="BIND is an implementation of the Domain Name System (DNS)
