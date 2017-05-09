@@ -2,7 +2,7 @@ inherit python
 
 NAME="bind"
 VERSION=9.11.0
-RELEASE=2.P3
+RELEASE=3.P5
 CATEGORY="Net"
 SUMMARY="DNS server and utilities suite"
 DESCRIPTION="BIND is an implementation of the Domain Name System (DNS)
@@ -20,6 +20,7 @@ SRC_URI="http://ftp.isc.org/isc/bind9/${tar_v}/bind-${tar_v}.tar.gz
 SRC_DIR="bind-${tar_v}"
 PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/bind.git/plain/bind-99-libidn.patch
+	http://pkgs.fedoraproject.org/cgit/rpms/bind.git/plain/bind-9.11-rh1236087.patch
 	9.9.6-configure.patch
 	9.9.6-lwconfig-win32.patch
 	9.5.0-parallel-build.patch
