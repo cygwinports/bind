@@ -1,4 +1,4 @@
-inherit python
+inherit python2 python3
 
 NAME="bind"
 VERSION=9.11.0
@@ -32,7 +32,8 @@ PATCH_URI="
 
 PKG_NAMES="bind bind-utils bind-doc
 	   libbind9_160 libdns166 libirs160 libisc160 libisccc160
-	   libisccfg160 liblwres160 libbind9-devel python-isc"
+	   libisccfg160 liblwres160 libbind9-devel
+	   python2-isc python3-isc"
 bind_SUMMARY="DNS server"
 bind_REQUIRES="bind-utils"
 bind_CONTENTS="
@@ -94,9 +95,13 @@ libbind9_devel_CONTENTS="
 	usr/share/man/man1/isc-config.sh*
 	usr/share/man/man3/
 "
-python_isc_CATEGORY="Python"
-python_isc_SUMMARY="Python module for sending commands to rndc"
-python_isc_CONTENTS="${PYTHON_SITELIB#/}/isc*"
+python2_isc_CATEGORY="Python"
+python2_isc_OBSOLETES="python-isc"
+python2_isc_SUMMARY="Python module for sending commands to rndc"
+python2_isc_CONTENTS="${PYTHON2_SITELIB#/}/isc*"
+python3_isc_CATEGORY="Python"
+python3_isc_SUMMARY="Python module for sending commands to rndc"
+python3_isc_CONTENTS="${PYTHON3_SITELIB#/}/isc*"
 
 DIFF_EXCLUDES="*.1 *.html *.pdf"
 DISTCLEANFILES="aclocal.m4"
@@ -150,6 +155,10 @@ src_install() {
 	cd ${B}
 	dosbin ${S}/named-config
 	cyginstall
+
+	pushd ${B}/bin/python
+	${PYTHON3} ${S}/bin/python/setup.py install --no-compile --root=${D}
+	popd
 
 	sed -i -e "s|-Wl,${B}[^ ]*||" ${D}/usr/bin/isc-config.sh
 
