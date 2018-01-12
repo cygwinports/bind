@@ -1,6 +1,17 @@
---- origsrc/bind-9.10.4-P3/lib/bind9/Makefile.in	2016-09-13 20:23:44.000000000 -0500
-+++ src/bind-9.10.4-P3/lib/bind9/Makefile.in	2016-09-27 13:07:14.083131800 -0500
-@@ -69,6 +69,7 @@ libbind9.la: ${OBJS} ${ISCCFGDEPLIBS} ${
+--- origsrc/bind-9.11.2/bin/tests/system/Makefile.in	2017-07-24 00:36:50.000000000 -0500
++++ src/bind-9.11.2/bin/tests/system/Makefile.in	2018-01-09 18:54:09.951425500 -0600
+@@ -12,7 +12,7 @@ VERSION=@BIND9_VERSION@
+ 
+ @BIND9_MAKE_INCLUDES@
+ 
+-SUBDIRS =	dlzexternal dyndb lwresd pipelined rndc rsabigexponent tkey
++SUBDIRS =	dlzexternal lwresd pipelined rndc rsabigexponent tkey
+ 
+ CINCLUDES =	${ISC_INCLUDES} ${DNS_INCLUDES}
+ 
+--- origsrc/bind-9.11.2/lib/bind9/Makefile.in	2017-07-24 00:36:50.000000000 -0500
++++ src/bind-9.11.2/lib/bind9/Makefile.in	2018-01-09 18:53:35.890487000 -0600
+@@ -60,6 +60,7 @@ libbind9.la: ${OBJS} ${ISCCFGDEPLIBS} ${
  	${LIBTOOL_MODE_LINK} \
  		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o libbind9.la -rpath ${libdir} \
  		-version-info ${LIBINTERFACE}:${LIBREVISION}:${LIBAGE} \
@@ -8,19 +19,19 @@
  		${OBJS} ${DNSLIBS} ${ISCCFGLIBS} ${ISCLIBS} @DNS_CRYPTO_LIBS@ \
  		${LIBS}
  
---- origsrc/bind-9.10.4-P3/lib/dns/Makefile.in	2016-09-27 12:58:58.278335400 -0500
-+++ src/bind-9.10.4-P3/lib/dns/Makefile.in	2016-09-27 13:07:19.297425200 -0500
-@@ -142,6 +142,7 @@ libdns.la: ${OBJS}
+--- origsrc/bind-9.11.2/lib/dns/Makefile.in	2018-01-09 18:03:48.603008700 -0600
++++ src/bind-9.11.2/lib/dns/Makefile.in	2018-01-09 18:53:35.890487000 -0600
+@@ -139,6 +139,7 @@ libdns.la: ${OBJS}
  	${LIBTOOL_MODE_LINK} \
  		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o libdns.la -rpath ${libdir} \
  		-version-info ${LIBINTERFACE}:${LIBREVISION}:${LIBAGE} \
 +		-no-undefined \
  		${OBJS} ${ISCLIBS} @DNS_CRYPTO_LIBS@ ${LIBS}
  
- timestamp: libdns.@A@
---- origsrc/bind-9.10.4-P3/lib/irs/Makefile.in	2016-09-13 20:23:44.000000000 -0500
-+++ src/bind-9.10.4-P3/lib/irs/Makefile.in	2016-09-27 13:32:25.621431400 -0500
-@@ -42,6 +42,14 @@ SRCS =		context.c \
+ include: gen
+--- origsrc/bind-9.11.2/lib/irs/Makefile.in	2017-07-24 00:36:50.000000000 -0500
++++ src/bind-9.11.2/lib/irs/Makefile.in	2018-01-09 18:53:35.906113000 -0600
+@@ -35,6 +35,14 @@ SRCS =		context.c \
  		gai_strerror.c getaddrinfo.c getnameinfo.c \
  		resconf.c
  
@@ -35,7 +46,7 @@
  LIBS =		@LIBS@
  
  SUBDIRS =	include
-@@ -61,11 +69,12 @@ libirs.@SA@: ${OBJS} version.@O@
+@@ -55,11 +63,12 @@ libirs.@SA@: ${OBJS} version.@O@
  	${AR} ${ARFLAGS} $@ ${OBJS} version.@O@
  	${RANLIB} $@
  
@@ -50,9 +61,9 @@
  
  timestamp: libirs.@A@
  	touch timestamp
---- origsrc/bind-9.10.4-P3/lib/isc/Makefile.in	2016-09-13 20:23:44.000000000 -0500
-+++ src/bind-9.10.4-P3/lib/isc/Makefile.in	2016-09-27 13:19:34.311759500 -0500
-@@ -121,12 +121,14 @@ libisc.la: ${OBJS} ${SYMTBLOBJS}
+--- origsrc/bind-9.11.2/lib/isc/Makefile.in	2017-07-24 00:36:50.000000000 -0500
++++ src/bind-9.11.2/lib/isc/Makefile.in	2018-01-09 18:53:35.906113000 -0600
+@@ -116,12 +116,14 @@ libisc.la: ${OBJS} ${SYMTBLOBJS}
  	${LIBTOOL_MODE_LINK} \
  		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o libisc.la -rpath ${libdir} \
  		-version-info ${LIBINTERFACE}:${LIBREVISION}:${LIBAGE} \
@@ -67,9 +78,9 @@
  		${OBJS} ${LIBS}
  
  timestamp: libisc.@A@ libisc-nosymtbl.@A@
---- origsrc/bind-9.10.4-P3/lib/isccc/Makefile.in	2016-09-13 20:23:44.000000000 -0500
-+++ src/bind-9.10.4-P3/lib/isccc/Makefile.in	2016-09-27 13:07:30.594793600 -0500
-@@ -71,6 +71,7 @@ libisccc.la: ${OBJS}
+--- origsrc/bind-9.11.2/lib/isccc/Makefile.in	2017-07-24 00:36:50.000000000 -0500
++++ src/bind-9.11.2/lib/isccc/Makefile.in	2018-01-09 18:53:35.906113000 -0600
+@@ -63,6 +63,7 @@ libisccc.la: ${OBJS}
  	${LIBTOOL_MODE_LINK} \
  		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o libisccc.la -rpath ${libdir} \
  		-version-info ${LIBINTERFACE}:${LIBREVISION}:${LIBAGE} \
@@ -77,19 +88,19 @@
  		${OBJS} ${ISCLIBS} ${LIBS}
  
  timestamp: libisccc.@A@
---- origsrc/bind-9.10.4-P3/lib/isccfg/Makefile.in	2016-09-13 20:23:44.000000000 -0500
-+++ src/bind-9.10.4-P3/lib/isccfg/Makefile.in	2016-09-27 13:07:34.500581800 -0500
-@@ -70,6 +70,7 @@ libisccfg.la: ${OBJS}
+--- origsrc/bind-9.11.2/lib/isccfg/Makefile.in	2017-07-24 00:36:50.000000000 -0500
++++ src/bind-9.11.2/lib/isccfg/Makefile.in	2018-01-09 18:53:35.925249000 -0600
+@@ -59,6 +59,7 @@ libisccfg.la: ${OBJS}
  	 ${LIBTOOL_MODE_LINK} \
  		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o libisccfg.la -rpath ${libdir} \
  		-version-info ${LIBINTERFACE}:${LIBREVISION}:${LIBAGE} \
 +		-no-undefined \
- 		${OBJS} ${DNSLIBS} ${ISCCCLIBS} ${ISCLIBS} @DNS_CRYPTO_LIBS@ \
+ 		${OBJS} ${DNSLIBS} ${ISCLIBS} @DNS_CRYPTO_LIBS@ \
  		${LIBS}
  
---- origsrc/bind-9.10.4-P3/lib/lwres/Makefile.in	2016-09-13 20:23:44.000000000 -0500
-+++ src/bind-9.10.4-P3/lib/lwres/Makefile.in	2016-09-27 13:07:38.421288900 -0500
-@@ -69,6 +69,7 @@ liblwres.la: ${OBJS} version.@O@
+--- origsrc/bind-9.11.2/lib/lwres/Makefile.in	2017-07-24 00:36:50.000000000 -0500
++++ src/bind-9.11.2/lib/lwres/Makefile.in	2018-01-09 18:53:35.928249000 -0600
+@@ -60,6 +60,7 @@ liblwres.la: ${OBJS} version.@O@
  	${LIBTOOL_MODE_LINK} \
  		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o liblwres.la -rpath ${libdir} \
  		-version-info ${LIBINTERFACE}:${LIBREVISION}:${LIBAGE} \
@@ -97,9 +108,9 @@
  		${OBJS} version.@O@ ${LIBS}
  
  timestamp: liblwres.@A@
---- origsrc/bind-9.10.4-P3/lib/tests/Makefile.in	2016-09-13 20:23:44.000000000 -0500
-+++ src/bind-9.10.4-P3/lib/tests/Makefile.in	2016-09-27 13:34:06.243113400 -0500
-@@ -47,6 +47,7 @@ libt_api.@SA@: ${OBJS}
+--- origsrc/bind-9.11.2/lib/tests/Makefile.in	2017-07-24 00:36:50.000000000 -0500
++++ src/bind-9.11.2/lib/tests/Makefile.in	2018-01-09 18:53:35.928249000 -0600
+@@ -38,6 +38,7 @@ libt_api.@SA@: ${OBJS}
  libt_api.la: ${OBJS}
  	${LIBTOOL_MODE_LINK} \
  		${CC} ${ALL_CFLAGS} ${LDFLAGS} -o libt_api.la -rpath ${libdir} \

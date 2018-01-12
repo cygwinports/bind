@@ -1,8 +1,8 @@
 inherit python2 python3
 
 NAME="bind"
-VERSION=9.11.0
-RELEASE=3.P5
+VERSION=9.11.2
+RELEASE=1
 CATEGORY="Net"
 SUMMARY="DNS server and utilities suite"
 DESCRIPTION="BIND is an implementation of the Domain Name System (DNS)
@@ -12,26 +12,26 @@ on the basis of its name. The BIND software distribution contains all of
 the software needed both to ask name service questions and to answer
 such questions."
 HOMEPAGE="http://www.isc.org/software/bind/"
-#tar_v=${VERSION}
-tar_v="${VERSION}-${RELEASE##*\.}"
+tar_v=${VERSION}
+#tar_v="${VERSION}-${RELEASE##*\.}"
 SRC_URI="http://ftp.isc.org/isc/bind9/${tar_v}/bind-${tar_v}.tar.gz
          http://ftp.isc.org/isc/bind9/${tar_v}/bind-${tar_v}.tar.gz.asc
          named-config"
 SRC_DIR="bind-${tar_v}"
 PATCH_URI="
-	http://pkgs.fedoraproject.org/cgit/bind.git/plain/bind-99-libidn.patch
-	http://pkgs.fedoraproject.org/cgit/rpms/bind.git/plain/bind-9.11-rh1236087.patch
+	http://pkgs.fedoraproject.org/cgit/rpms/bind.git/plain/bind-99-libidn.patch
+	http://pkgs.fedoraproject.org/cgit/rpms/bind.git/plain/bind-9.11-rh1410433.patch
+	http://pkgs.fedoraproject.org/cgit/rpms/bind.git/plain/bind-9.11-rh1205168.patch
 	9.9.6-configure.patch
 	9.9.6-lwconfig-win32.patch
 	9.5.0-parallel-build.patch
 	9.9.6-cygwin-threads.patch
 	9.10.3-cygwin-ftm.patch
-	9.10.4-libtool.patch
-	9.11.0-tests-libtool.patch
+	9.11.2-libtool.patch
 "
 
 PKG_NAMES="bind bind-utils bind-doc
-	   libbind9_160 libdns166 libirs160 libisc160 libisccc160
+	   libbind9_160 libdns169 libirs160 libisc166 libisccc160
 	   libisccfg160 liblwres160 libbind9-devel
 	   python2-isc python3-isc"
 bind_SUMMARY="DNS server"
@@ -59,15 +59,15 @@ bind_doc_CONTENTS="usr/share/doc/bind/arm/"
 libbind9_160_CATEGORY="Libs"
 libbind9_160_SUMMARY="BIND library"
 libbind9_160_CONTENTS="usr/bin/cygbind9-160.dll"
-libdns166_CATEGORY="Libs"
-libdns166_SUMMARY="BIND DNS library"
-libdns166_CONTENTS="usr/bin/cygdns-166.dll"
+libdns169_CATEGORY="Libs"
+libdns169_SUMMARY="BIND DNS library"
+libdns169_CONTENTS="usr/bin/cygdns-169.dll"
 libirs160_CATEGORY="Libs"
 libirs160_SUMMARY="BIND resolv.conf parser library"
 libirs160_CONTENTS="usr/bin/cygirs-160.dll"
-libisc160_CATEGORY="Libs"
-libisc160_SUMMARY="BIND ISC core library"
-libisc160_CONTENTS="usr/bin/cygisc-160.dll"
+libisc166_CATEGORY="Libs"
+libisc166_SUMMARY="BIND ISC core library"
+libisc166_CONTENTS="usr/bin/cygisc-166.dll"
 libisccc160_CATEGORY="Libs"
 libisccc160_SUMMARY="BIND Control Channel library"
 libisccc160_CONTENTS="usr/bin/cygisccc-160.dll"
