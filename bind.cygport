@@ -2,7 +2,7 @@ inherit python3 python-wheel
 
 NAME="bind"
 VERSION=9.11.5
-RELEASE=1.P1
+RELEASE=2.P4
 CATEGORY="Net"
 SUMMARY="DNS server and utilities suite"
 DESCRIPTION="BIND is an implementation of the Domain Name System (DNS)
@@ -37,6 +37,8 @@ PATCH_URI="
 	fedora/bind-9.11-rh1666814.patch
 	fedora/bind-9.11-rh1647829.patch
 	fedora/bind-9.11-rh1647829-2.patch
+	fedora/bind-9.11-ed448-disable.patch
+	fedora/bind-9.11-unit-disable-random.patch
 	9.9.6-configure.patch
 	9.9.6-lwconfig-win32.patch
 	9.5.0-parallel-build.patch
