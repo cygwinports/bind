@@ -1,8 +1,8 @@
 inherit python3 python-wheel
 
 NAME="bind"
-VERSION=9.11.5
-RELEASE=2.P4
+VERSION=9.11.6
+RELEASE=1
 CATEGORY="Net"
 SUMMARY="DNS server and utilities suite"
 DESCRIPTION="BIND is an implementation of the Domain Name System (DNS)
@@ -12,8 +12,8 @@ on the basis of its name. The BIND software distribution contains all of
 the software needed both to ask name service questions and to answer
 such questions."
 HOMEPAGE="http://www.isc.org/downloads/bind/"
-#tar_v=${VERSION}
-tar_v="${VERSION}-${RELEASE##*\.}"
+tar_v=${VERSION}
+#tar_v="${VERSION}-${RELEASE##*\.}"
 SRC_URI="http://ftp.isc.org/isc/bind9/${tar_v}/bind-${tar_v}.tar.gz
          http://ftp.isc.org/isc/bind9/${tar_v}/bind-${tar_v}.tar.gz.asc
          named-config"
@@ -32,13 +32,12 @@ PATCH_URI="
 	fedora/bind-9.11-rt46047.patch
 	fedora/bind-9.11-rh1624100.patch
 	fedora/bind-9.11-host-idn-disable.patch
-	fedora/bind-9.11-unit-dnstap-pkcs11.patch
 	fedora/bind-9.11-rh1663318.patch
 	fedora/bind-9.11-rh1666814.patch
 	fedora/bind-9.11-rh1647829.patch
-	fedora/bind-9.11-rh1647829-2.patch
-	fedora/bind-9.11-ed448-disable.patch
 	fedora/bind-9.11-unit-disable-random.patch
+	fedora/bind-9.11-unit-dnstap-pkcs11.patch
+	fedora/bind-9.11-unit-timer-nothread.patch
 	9.9.6-configure.patch
 	9.9.6-lwconfig-win32.patch
 	9.5.0-parallel-build.patch
@@ -49,9 +48,9 @@ PATCH_URI="
 "
 
 PKG_NAMES="bind bind-utils bind-doc
-	   libbind9_161 libdns1104 libirs161 libisc1100 libisccc161
+	   libbind9_161 libdns1105 libirs161 libisc1100 libisccc161
 	   libisccfg163 liblwres161 libbind9-devel
-	   python27-isc python36-isc"
+	   python27-isc python36-isc python37-isc"
 bind_SUMMARY="DNS server"
 bind_REQUIRES="bind-utils"
 bind_CONTENTS="
@@ -77,9 +76,9 @@ bind_doc_CONTENTS="usr/share/doc/bind/arm/"
 libbind9_161_CATEGORY="Libs"
 libbind9_161_SUMMARY="BIND library"
 libbind9_161_CONTENTS="usr/bin/cygbind9-161.dll"
-libdns1104_CATEGORY="Libs"
-libdns1104_SUMMARY="BIND DNS library"
-libdns1104_CONTENTS="usr/bin/cygdns-1104.dll"
+libdns1105_CATEGORY="Libs"
+libdns1105_SUMMARY="BIND DNS library"
+libdns1105_CONTENTS="usr/bin/cygdns-1105.dll"
 libirs161_CATEGORY="Libs"
 libirs161_SUMMARY="BIND resolv.conf parser library"
 libirs161_CONTENTS="usr/bin/cygirs-161.dll"
@@ -121,6 +120,9 @@ python36_isc_CATEGORY="Python"
 python36_isc_OBSOLETES="python3-isc"
 python36_isc_SUMMARY="Python module for sending commands to rndc"
 python36_isc_CONTENTS="usr/lib/python3.6/site-packages/isc*"
+python37_isc_CATEGORY="Python"
+python37_isc_SUMMARY="Python module for sending commands to rndc"
+python37_isc_CONTENTS="usr/lib/python3.7/site-packages/isc*"
 
 DIFF_EXCLUDES="*.1 *.8 *.html *.pdf notes.txt"
 DISTCLEANFILES="aclocal.m4"
@@ -167,7 +169,7 @@ _EOF
 		--with-libxml2=/usr \
 		--with-lmdb \
 		--with-openssl=/usr \
-		--with-python=${PYTHON3}
+		--with-python=/usr/bin/python${PYTHON3_VERSION}
 
 	cygmake
 	cygmake -j1 doc

@@ -1,5 +1,5 @@
---- origsrc/bind-9.9.6/configure.in	2014-09-16 14:27:20.000000000 -0500
-+++ src/bind-9.9.6/configure.in	2014-10-12 13:30:24.055416500 -0500
+--- origsrc/bind-9.9.6/configure.ac	2014-09-16 14:27:20.000000000 -0500
++++ src/bind-9.9.6/configure.ac	2014-10-12 13:30:24.055416500 -0500
 @@ -100,7 +100,7 @@ AC_SUBST(ARFLAGS)
  
  # The POSIX ln(1) program.  Non-POSIX systems may substitute
