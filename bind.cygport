@@ -95,7 +95,7 @@ liblwres161_CATEGORY="Libs"
 liblwres161_SUMMARY="BIND Lightweight Resolver library"
 liblwres161_CONTENTS="usr/bin/cyglwres-161.dll"
 libbind9_devel_CATEGORY="Libs"
-libbind9_devel_REQUIRES="libGeoIP-devel libjson-c-devel libkrb5-devel libxml2-devel openssl-devel"
+libbind9_devel_REQUIRES="libjson-c-devel libkrb5-devel libxml2-devel openssl-devel"
 libbind9_devel_SUMMARY="BIND libraries (development)"
 libbind9_devel_CONTENTS="
 	usr/bin/bind9-config
@@ -161,7 +161,7 @@ _EOF
 		--with-dlz-postgres=/usr \
 		--with-dlz-stub \
 		--with-docbook-xsl=/usr/share/sgml/docbook/xsl-stylesheets \
-		--with-geoip \
+		--without-geoip \
 		--with-gssapi --disable-isc-spnego \
 		--with-libidn2 \
 		--with-libjson \
